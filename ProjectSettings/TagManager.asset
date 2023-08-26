@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Launcher
+  - BloodBar
+  - ObjectPool
+  - MoveAsh
+  - TurnAsh
+  - DashAsh
+  - JumpAsh
+  - VCM
+  - Foot
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Dead
+  - Water
+  - UI
+  - Ground
+  - Player
+  - Enemy
+  - Single
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 4157002687
+    locked: 0
+  - name: Ground
+    uniqueID: 974727281
+    locked: 0
+  - name: TileMap
+    uniqueID: 1161483109
+    locked: 0
+  - name: Object
+    uniqueID: 1394797517
+    locked: 0
+  - name: Character
+    uniqueID: 3730399525
+    locked: 0
+  - name: Enemy
+    uniqueID: 1580273141
+    locked: 0
+  - name: Effect
+    uniqueID: 1804198889
+    locked: 0

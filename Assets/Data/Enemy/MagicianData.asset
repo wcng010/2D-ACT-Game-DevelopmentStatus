@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3c970f9ad24a08ad95d38c922fcf59, type: 3}
+  m_Name: MagicianData
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 80
+  <CurrentHealth>k__BackingField: 80
+  <AttackPower>k__BackingField: 15
+  <Defense>k__BackingField: 5
+  <CriticalRate>k__BackingField: 0.3
+  <CriticalDamage>k__BackingField: 1.5
+  <Level>k__BackingField: 1
+  <GradeIncrease>k__BackingField: 0.3
+  <CoolDown>k__BackingField: 1
+  <HitForceUp>k__BackingField: 0
+  <HitForceDown>k__BackingField: 0
+  <HitForceForward>k__BackingField: 0
+  <IsDeath>k__BackingField: 0
+  <IsHurt>k__BackingField: 0
+  <IsDebug>k__BackingField: 0
+  <OriginState>k__BackingField: 3
+  <PursuitRange>k__BackingField: 3
+  <PatrolRange>k__BackingField: 2
+  <PatrolSpeed>k__BackingField: 1
+  <PursuitSpeed>k__BackingField: 1.5
+  <HitEffectOffSetY>k__BackingField: 0
+  <HitEffect1>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
+  <HitEffect2>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <RemoteAttackRange>k__BackingField: 1.5
+  <MeleeAttackRange>k__BackingField: 0.5
+  <RemoteAttackCoolDown>k__BackingField: 1
+  <MeleeAttackCoolDown>k__BackingField: 1
+  <OriginPointX>k__BackingField: 6.616698
+  <MeleeAttackAngle>k__BackingField: 75
