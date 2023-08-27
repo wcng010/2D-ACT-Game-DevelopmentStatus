@@ -28,7 +28,7 @@ MonoBehaviour:
   <IsHurt>k__BackingField: 0
   <IsDebug>k__BackingField: 0
   <OriginState>k__BackingField: 3
-  <PursuitRange>k__BackingField: 3
+  <PursuitRange>k__BackingField: 1
   <PatrolRange>k__BackingField: 2
   <PatrolSpeed>k__BackingField: 1
   <PursuitSpeed>k__BackingField: 1.5

@@ -39,7 +39,7 @@ MonoBehaviour:
   <GravityScale>k__BackingField: 1.5
   <DecelerateRateRate>k__BackingField: 0.5
   <AccelerateRate>k__BackingField: 1.5
-  <MaxSpeedX>k__BackingField: 3
+  <MaxSpeedX>k__BackingField: 2
   <AccelerationX>k__BackingField: 30
   <DeAcceleration>k__BackingField: 45
   <DashLength>k__BackingField: 3
@@ -52,7 +52,7 @@ MonoBehaviour:
   <LinkTimeScale>k__BackingField: 0
   <IsLinkTime>k__BackingField: 0
   <DecelerationSpeed>k__BackingField: 0
-  <TurnAroundSpeed>k__BackingField: 2.4
+  <TurnAroundSpeed>k__BackingField: 1.6
   <Deceleration>k__BackingField: 3.5
   <PlayerWounded>k__BackingField: {fileID: 1082149952092684782, guid: e06aa1800526dd745adc0931128d88db, type: 3}
   <WoudedEffectOffSetY>k__BackingField: 0

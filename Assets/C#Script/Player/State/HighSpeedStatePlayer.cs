@@ -59,7 +59,7 @@ namespace C_Script.Player.StateModel
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.OnAirStatePlayer]);
             //Return OnGroundState
             else if (IsFullSpeed&&Input.GetKeyDown(KeyCode.D) && MoveDir==-1)
-            StateMachine.ChangeState(StateDictionary[PlayerStateType.TurnAroundStatePlayer]);
+                StateMachine.ChangeState(StateDictionary[PlayerStateType.TurnAroundStatePlayer]);
             else if (IsFullSpeed&&Input.GetKeyDown(KeyCode.A) && MoveDir == 1) 
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.TurnAroundStatePlayer]);
             else if (Owner.XAxis == 0)
