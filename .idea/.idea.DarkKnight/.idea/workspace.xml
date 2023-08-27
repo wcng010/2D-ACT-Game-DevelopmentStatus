@@ -120,7 +120,6 @@
       <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/UI/ScenesBloodBars/MonsterHealthUI.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/UI/ScenesBloodBars/MonsterHealthUI.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DarkKnight/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DarkKnight/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/C#Script/Player/State/HighSpeedStatePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#Script/Player/State/HighSpeedStatePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +202,7 @@
       <workItem from="1693039141892" duration="6084000" />
       <workItem from="1693051164027" duration="4538000" />
       <workItem from="1693056400695" duration="4406000" />
-      <workItem from="1693139206112" duration="627000" />
+      <workItem from="1693139206112" duration="894000" />
     </task>
     <servers />
   </component>
