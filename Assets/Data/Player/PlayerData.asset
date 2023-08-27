@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d8608b219c4dd396663dda8855994c, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 200
+  <CurrentHealth>k__BackingField: 200
+  <AttackPower>k__BackingField: 10
+  <Defense>k__BackingField: 5
+  <CriticalRate>k__BackingField: 0.5
+  <CriticalDamage>k__BackingField: 1
+  <Level>k__BackingField: 1
+  <GradeIncrease>k__BackingField: 0.3
+  <CoolDown>k__BackingField: 0
+  <HitForceUp>k__BackingField: 400
+  <HitForceDown>k__BackingField: 400
+  <HitForceForward>k__BackingField: 100
+  <IsDeath>k__BackingField: 0
+  <IsHurt>k__BackingField: 0
+  <IsDebug>k__BackingField: 0
+  rollForce: 400
+  slideForce: 500
+  <CrouchSizeY>k__BackingField: 0.275
+  <IdleSizeY>k__BackingField: 0.3814326
+  <DeathSizeY>k__BackingField: 0.13
+  <SlideSizeY>k__BackingField: 0.18
+  <Attack1Range>k__BackingField: 0.35
+  <Attack2Range>k__BackingField: 0.35
+  <CrouchAttackRange>k__BackingField: 0.42
+  <GravityScale>k__BackingField: 1.5
+  <DecelerateRateRate>k__BackingField: 0.5
+  <AccelerateRate>k__BackingField: 1.5
+  <MaxSpeedX>k__BackingField: 2
+  <AccelerationX>k__BackingField: 30
+  <DeAcceleration>k__BackingField: 45
+  <DashLength>k__BackingField: 3
+  <DashSpeed>k__BackingField: 3
+  <YSpeedUpTime>k__BackingField: 0.3
+  <AccelerationY>k__BackingField: 300
+  <MaxSpeedY>k__BackingField: 3
+  <MaxSpeedCrouchX>k__BackingField: 1
+  <AccelerationCrouchX>k__BackingField: 30
+  <LinkTimeScale>k__BackingField: 0
+  <IsLinkTime>k__BackingField: 0
+  <DecelerationSpeed>k__BackingField: 0
+  <TurnAroundSpeed>k__BackingField: 1.6
+  <Deceleration>k__BackingField: 3.5
+  <PlayerWounded>k__BackingField: {fileID: 1082149952092684782, guid: e06aa1800526dd745adc0931128d88db, type: 3}
+  <WoudedEffectOffSetY>k__BackingField: 0
