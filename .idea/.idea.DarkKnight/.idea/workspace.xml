@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="65a0be5c-79b6-4fb0-88d7-9790fa3fea01" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack1StateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack1StateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack2StateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack2StateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack3StateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/Attack3StateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/ComboStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/ComboStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/DeathStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/DeathStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/DodgeStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/DodgeStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/HurtStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/HurtStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/PursuitStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/PursuitStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/ReadyStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/ReadyStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/WaitStateSwordSaint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/State/WaitStateSwordSaint.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/SwordSaintData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/Boss/SwordSaint/SwordSaintData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/Controller/EnemyController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/Controller/EnemyController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/View.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/View/EnemyView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/DarkKnight/Assets/C#Script/Eneny/EnemyCommon/View/EnemyView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/AttackObjectData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/BossData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/BossData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/Controller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/Controller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/Core.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/CoreComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/DataBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/DataBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/EnemyData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/EnemyData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/HealthComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/HealthComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/Model.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/Model.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/ObjectListSo.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/PhysicObject.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/PhysicObject.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/View.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/BaseClass/View.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Camera/MainCamera.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Common.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Controller/DemonBossController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Controller/DemonBossController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Model.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Model/DemonBossModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/Model/DemonBossModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/View.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/View/DemonBossView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Boss/DemonBoss/View/DemonBossView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/EnemyCommon.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/EnemyCommon/Model.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/EnemyCommon/Model/EnemyModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/EnemyCommon/Model/EnemyModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/Controller/FlyingEyeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/Controller/FlyingEyeController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/Data/FlyingEyeData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/Data/FlyingEyeData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/CoolStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/CoolStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/DeathStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/DeathStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/FlyStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/FlyStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/HeavyAttackStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/HeavyAttackStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/HurtStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/HurtStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/IdleStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/IdleStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/LightAttackStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/LightAttackStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/SleepStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/SleepStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/StateBase.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/StateBase/FlyingEyeState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/StateBase/FlyingEyeState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/WakeStateFlyingEye.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/FlyingEye/State/WakeStateFlyingEye.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Controller/MagicianController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Controller/MagicianController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Model.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Model/MagicianModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/Model/MagicianModel.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/View.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/View/MagicianView.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Eneny/Monster/Magician/View/MagicianView.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Manager/GameManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Object/Meteorite.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Component/CollisionComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Component/ObjectComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Component/PlayerHealth.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Component/PlayerHealth.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Core/PlayerCore.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Data/PlayerData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Data/PlayerData.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Data/SkillData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Skill.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/Player/Skill/RemoteSkill.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/UI/ScenesBloodBars/MonsterHealthUI.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Match/GbitGame/Assets/C#Script/UI/ScenesBloodBars/MonsterHealthUI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DarkKnight/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DarkKnight/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/C#Script/Player/State/HighSpeedStatePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/C#Script/Player/State/HighSpeedStatePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/79f3a9d75afc454f9a46d7c9960e4a6529200/7e/2131a80a/EventType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/C#Script/Common/Model/EventCentre/ScenesEventCentreManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/C#Script/Eneny/Boss/SwordSaint/SwordSaintCore.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/C#Script/Eneny/EnemyCommon/Trigger/BossTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/C#Script/Object/DeadLine.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2UNrPXNlG0R5mi1nKZijX5gLZ7K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="D:\GameDevelopmentTools\Unity\Unity 2021.3.6f1c1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\UnityProject\Match\DarkKnight -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="D:\UnityProject\Match\DarkKnight" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="65a0be5c-79b6-4fb0-88d7-9790fa3fea01" name="Changes" comment="" />
+      <created>1692790859415</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692790859415</updated>
+      <workItem from="1692790877371" duration="1398000" />
+      <workItem from="1692792497907" duration="12925000" />
+      <workItem from="1692863948808" duration="16934000" />
+      <workItem from="1692898556793" duration="7398000" />
+      <workItem from="1692973088558" duration="12984000" />
+      <workItem from="1693039141892" duration="6084000" />
+      <workItem from="1693051164027" duration="4538000" />
+      <workItem from="1693056400695" duration="4406000" />
+      <workItem from="1693139206112" duration="627000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/C#Script/Eneny/Monster/Magician/State/PursuitStateMagician.cs</url>
+          <line>35</line>
+          <properties documentPath="D:\UnityProject\Match\DarkKnight\Assets\C#Script\Eneny\Monster\Magician\State\PursuitStateMagician.cs" initialLine="35" containingFunctionPresentation="constructor 'PursuitStateMagician'">
+            <startOffsets>
+              <option value="1124" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1128" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
