@@ -56,7 +56,6 @@ namespace C_Script.Eneny.Boss.SwordSaint
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStop,DemonBossStop);
         }
-        
         private void FindComponent()
         {
             InitAnimator(SwordSaintModel.EnemyAnimator);
@@ -91,10 +90,10 @@ namespace C_Script.Eneny.Boss.SwordSaint
             SwordSaintStateDic.Add(EnemyStateType.DeathStateEnemy,new DeathStateSwordSaint(this,"Death","SwordSaint_death"));
             SwordSaintStateDic.Add(EnemyStateType.DodgeStateEnemy,new DodgeStateSwordSaint(this,"Dodge","SwordSaint_dodge"));
             SwordSaintStateDic.Add(EnemyStateType.WaitStateEnemy, new WaitStateSwordSaint(this,"null","null"));
-            SwordSaintStateDic.Add(EnemyStateType.ComboAttackStateEnemy, new ComboStateSwordSaint(this,"Combo","SwordSaint_combo1","SwordSaint_combo2","SwordSaint_combo3"));
+            SwordSaintStateDic.Add(EnemyStateType.ComboAttackStateEnemy,
+                new ComboStateSwordSaint(this,"Combo","SwordSaint_ready","SwordSaint_combo1","SwordSaint_combo2","SwordSaint_combo3"));
             SwordSaintStateDic.Add(EnemyStateType.ReadyStateEnemy,new ReadyStateSwordSaint(this,null,null));
         }
-        
         public override void InitDataSetting()
         {
         }

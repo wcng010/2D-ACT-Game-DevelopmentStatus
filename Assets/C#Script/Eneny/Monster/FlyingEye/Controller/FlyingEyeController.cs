@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using C_Script.Eneny.EnemyCommon.Controller;
+using UnityEngine;
 
 namespace C_Script.Eneny.Monster.FlyingEye.Controller
 {
-    public class FlyingEyeController : MonoBehaviour
+    public class FlyingEyeController : EnemyController
     {
     }
 }

@@ -48,15 +48,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e7a92c2fa37d5574badbc74887a8f4d2, type: 2}
+  <View>k__BackingField: {fileID: 7834447220816271502}
+  <Controller>k__BackingField: {fileID: 7834447220816271489}
   <EnemyTrans>k__BackingField: {fileID: 7834447221363509307}
   <TargetTrans>k__BackingField: {fileID: 0}
   <EnemySprite>k__BackingField: {fileID: 7834447221363509306}
   <EnemyAnimator>k__BackingField: {fileID: 7834447221363509308}
   <EnemyCapCollider2D>k__BackingField: {fileID: 7834447221363509309}
   <EnemyRigidbody2D>k__BackingField: {fileID: 7834447221363509304}
-  <FlyingEyeView>k__BackingField: {fileID: 7834447220816271502}
-  <FlyingEyeController>k__BackingField: {fileID: 7834447220816271489}
-  <FlyingEyeCore>k__BackingField: {fileID: 7834447221035374090}
+  <EnemyCore>k__BackingField: {fileID: 7834447221035374090}
 --- !u!114 &7834447220816271502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7834447221363509311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.377, y: -5.401, z: -0.063025214}
+  m_LocalPosition: {x: 1.377, y: -0.25, z: -0.063025214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -1545211, guid: 7cfd17cf6f763b449a545252a8dfdbf4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.52156866, g: 0.5568628, b: 0.098039225, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -245,7 +245,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03, y: 0}

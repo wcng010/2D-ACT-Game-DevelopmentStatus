@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using C_Script.Eneny.EnemyCommon.Controller;
+using C_Script.Eneny.EnemyCommon.View;
 
-public class FlyingEyeView : MonoBehaviour
+namespace C_Script.Eneny.Monster.FlyingEye.View
 {
-    // Start is called before the first frame update
-    void Start()
+    public class FlyingEyeView : EnemyView
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

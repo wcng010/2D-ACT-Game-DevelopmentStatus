@@ -49,20 +49,20 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             TransformOwner.localScale = new Vector3(toTargetVector2.x/Mathf.Abs(toTargetVector2.x), 1, 1);
             if (distance < SwordSaintData.AttackRange)
             {
-                float ramdomValue = Random.value;
-                if (ramdomValue < 0.25)
+                float randomValue = Random.value;
+                if (randomValue < 0.25)
                 {
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.MeleeAttack1StateEnemy]);
                 }
-                else if (ramdomValue < 0.5)
+                else if (randomValue < 0.5)
                 {
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.MeleeAttack2StateEnemy]);
                 }
-                else if (ramdomValue < 0.75)
+                else if (randomValue < 0.75)
                 {
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.MeleeAttack3StateEnemy]);
                 }
-                else
+                else 
                 {
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.ComboAttackStateEnemy]);
                 }

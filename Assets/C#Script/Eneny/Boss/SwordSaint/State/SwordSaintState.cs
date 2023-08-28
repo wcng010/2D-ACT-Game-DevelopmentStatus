@@ -1,8 +1,10 @@
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using C_Script.BaseClass;
 using C_Script.Common.Model.BehaviourModel;
 using C_Script.Common.Model.EventCentre;
+using C_Script.Eneny.EnemyCreator;
 using C_Script.Player.Component;
 using UnityEngine;
 
@@ -13,6 +15,9 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         protected SwordSaintData SwordSaintData => DataSo as SwordSaintData;
         protected SwordSaintModel SwordSaintModel => Model as SwordSaintModel;
         protected Dictionary<EnemyStateType, State<SwordSaintBase>> SwordSaintStateDic => Owner.SwordSaintStateDic;
+        protected BossFactory BossFactory => Owner.Factory;
+
+        protected Transform TargetTrans => SwordSaintModel.TargetTrans;
 
         public SwordSaintState(SwordSaintBase owner, string nameToTrigger, string animationName) : base(owner, nameToTrigger, animationName)
         {

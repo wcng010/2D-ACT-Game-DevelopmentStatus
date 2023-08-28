@@ -43,7 +43,7 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
             InitAnimator(FlyingEyeModel.EnemyAnimator);
             InitRigidbody2D(FlyingEyeModel.EnemyRigidbody2D);
             InitCollider2D(FlyingEyeModel.EnemyCapCollider2D);
-            InitCore(FlyingEyeModel.FlyingEyeCore);
+            InitCore(FlyingEyeModel.EnemyCore);
             InitTransform(FlyingEyeModel.EnemyTrans);
             InitData(Data);
             InitModel(FlyingEyeModel);
