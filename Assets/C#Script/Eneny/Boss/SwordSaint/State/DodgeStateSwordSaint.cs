@@ -25,6 +25,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         public override void Exit()
         {
             base.Exit();
+            SwordSaintData.SkillButton1 = true;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using C_Script.Eneny.Boss.DemonBoss.BaseClass;
 using C_Script.Eneny.Boss.DemonBoss.State.StateBase;
+using C_Script.Object;
 using C_Script.Player.Component;
 using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
         public override void Enter()
         {
             base.Enter();
-            Owner.StartCoroutine(EarthFiree());
+            Owner.StartCoroutine(EarthFire());
         }
 
         public override void LogicExcute()
@@ -28,13 +29,14 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
         {
             base.Exit();
         }
-        
-        private IEnumerator EarthFiree()
+        // ReSharper disable Unity.PerformanceAnalysis
+        private IEnumerator EarthFire()
         {
             yield return new WaitForSeconds(1.3f);
             Owner.StartCoroutine(AttackFront());
-            Owner.Factory.effect1.SetActive(true);
+            Owner.Factory.effect1.GetComponent<EarthFire>().OnFire();            
             yield return new WaitUntil(() => IsAniamtionFinshed);
+            Owner.Factory.effect1.GetComponent<EarthFire>().FightFire();
             Owner.Factory.effect1.SetActive(false);
         }
 

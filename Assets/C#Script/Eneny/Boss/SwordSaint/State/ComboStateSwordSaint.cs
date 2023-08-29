@@ -8,18 +8,12 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
 {
     public class ComboStateSwordSaint: SwordSaintState
     {
-        private string _comboAnimName1;
-        private string _comboAnimName2;
-        private string _comboAnimName3;
-        private string _comboAnimName4;
-        private bool _comboStart1;
-        private bool _comboStart2;
-        private bool _comboStart3;
-        private bool _comboStart4;
-        private bool _comboFinished1;
-        private bool _comboFinished2;
-        private bool _comboFinished3;
+        private readonly string _comboAnimName1;
+        private readonly string _comboAnimName2;
+        private readonly string _comboAnimName3;
+        private readonly string _comboAnimName4;
         private bool _comboFinished4;
+        private int _skillButtonInternal;
 
         private GameObject SwordScar =>
             _swordScar ? _swordScar : _swordScar = UnityEngine.Object.Instantiate(SwordSaintData.SwordScar,SwordSaintModel.transform);
@@ -36,8 +30,17 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
 
         public override void Enter()
         {
+            
             AnimatorOwner.SetBool(NameToTrigger,true);
-            SwordScar.SetActive(true);
+            if(SwordSaintData.SkillButton1)
+            {
+                SwordScar.SetActive(true);
+                _skillButtonInternal = 1;
+            }
+            else
+            {
+                _skillButtonInternal = 0;
+            }
             Owner.StartCoroutine(WaitAnimationFinish());
             var toTargetVector2 = SwordSaintModel.TargetTrans.position - TransformOwner.position;
             TransformOwner.localScale = new Vector3(toTargetVector2.x/Mathf.Abs(toTargetVector2.x), 1, 1);
@@ -60,71 +63,81 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             AnimatorOwner.SetBool(NameToTrigger,false);
             BossFactory.warningSign.SetActive(false);
             SwordScar.SetActive(false);
-            _comboStart1 = false;
-            _comboStart2 = false;
-            _comboStart3 = false;
-            _comboStart4 = false;
-            _comboFinished1 = false;
-            _comboFinished2 = false;
-            _comboFinished3 = false;
+            SwordSaintData.SkillButton1 = false;
             _comboFinished4 = false;
             SwordSaintData.IsHurt = false;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         IEnumerator WaitAnimationFinish()
         {
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName1));
-            
-            _comboStart1 = true;
-            BossFactory.warningSign.SetActive(true);
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f);
-            
-            _comboFinished1 = true;
-            BossFactory.warningSign.SetActive(false);
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName2));
-            
-            _comboStart2 = true;
-            SwordScar.transform.position = TargetTrans.position + (Vector3)SwordSaintData.SwordScarRelativePos1; 
-            SwordScar.GetComponent<Animator>().SetTrigger("Scar1");
-            Owner.StartCoroutine(ComboBehaviour(_comboAnimName2,
-                new Vector2(SwordSaintData.Attack1Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack1Direction.y),ForceDirection.Up));
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f);
-            
-            _comboFinished2 = true;
-            SwordScar.transform.position = TargetTrans.position + (Vector3)SwordSaintData.SwordScarRelativePos2; 
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName3));
-            
-            _comboStart3 = true;
-            Owner.StartCoroutine(ComboBehaviour(_comboAnimName3,
-                new Vector2(SwordSaintData.Attack2Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack2Direction.y),ForceDirection.Down));
-            SwordScar.GetComponent<Animator>().SetTrigger("Scar2");
-            
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f);
-            
-            _comboFinished3 = true;
-            
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName4));
-            
-            _comboStart4 = true;
-            SwordScar.transform.position = TargetTrans.position + (Vector3)SwordSaintData.SwordScarRelativePos3; 
-            Owner.StartCoroutine(ComboBehaviour(_comboAnimName4,
-                new Vector2(SwordSaintData.Attack3Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack3Direction.y),ForceDirection.Forward));
-            SwordScar.GetComponent<Animator>().SetTrigger("Scar3");
-
-            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f);
-            
-            _comboFinished4 = true;
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName1)); ReadyAnimationStart();
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f); ReadyAnimationFininsh();
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName2)); Attack1AnimationStart();
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName3)); Attack2AnimationStart();
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).IsName(_comboAnimName4)); Attack3AnimationStart();
+            yield return new WaitUntil(() => AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime>0.95f); Attack3AnimationFininsh();
         }
 
         private void SwitchState()
         {
             if (SwordSaintData.IsDeath)
                 StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.DeathStateEnemy]);
+        }
+
+        private void ReadyAnimationStart()
+        {
+            BossFactory.warningSign.SetActive(true);
+        }
+        
+        private void ReadyAnimationFininsh()
+        {
+            BossFactory.warningSign.SetActive(false);
+        }
+        
+        private void Attack1AnimationStart()
+        {
+            SwordScarChange("Scar1",SwordSaintData.SwordScarRelativePos1);
+            Owner.StartCoroutine(ComboBehaviour(_comboAnimName2,
+                new Vector2(SwordSaintData.Attack1Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack1Direction.y),ForceDirection.Up));
+        }
+        
+        private void Attack1AnimationFininsh()
+        {
+            
+        }
+        private void Attack2AnimationStart()
+        {
+            SwordScarChange("Scar2",SwordSaintData.SwordScarRelativePos2);
+            Owner.StartCoroutine(ComboBehaviour(_comboAnimName3,
+                new Vector2(SwordSaintData.Attack2Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack2Direction.y),ForceDirection.Down));
+        }
+        private void Attack2AnimationFininsh()
+        {
+            
+        }
+        private void Attack3AnimationStart()
+        {
+            SwordScarChange("Scar3", SwordSaintData.SwordScarRelativePos3);
+            Owner.StartCoroutine(ComboBehaviour(_comboAnimName4,
+                new Vector2(SwordSaintData.Attack3Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack3Direction.y),ForceDirection.Forward));
+
+        }
+        private void Attack3AnimationFininsh()
+        {
+            _comboFinished4 = true;
+        }
+
+
+
+
+        private void SwordScarChange(string TriggerName,Vector3 RelativePos)
+        {
+            if (_skillButtonInternal == 1)
+            {
+                SwordScar.transform.position = TargetTrans.position + RelativePos;
+                SwordScar.GetComponent<Animator>().SetTrigger(TriggerName);
+            }
         }
     }
 }

@@ -15,9 +15,9 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             if (IsAniamtionFinshed)
             {
                 float randomValue = Random.value;
-                /*if (randomValue < 0.7)
+                if (randomValue < 0.7)
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.ReadyStateEnemy]);
-                else*/
+                else
                     StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.DodgeStateEnemy]);
             }
             
