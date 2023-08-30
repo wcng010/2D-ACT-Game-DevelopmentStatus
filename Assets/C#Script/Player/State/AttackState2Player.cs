@@ -1,10 +1,6 @@
 using System.Collections;
-using C_Script.Manager;
 using C_Script.Player.BaseClass;
-using C_Script.Player.Component;
-using C_Script.Player.Core;
 using C_Script.Player.StateModel.BaseState;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel

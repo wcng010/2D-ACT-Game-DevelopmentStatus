@@ -17,6 +17,7 @@ namespace C_Script.UI.ScenesChange
         public void ReStartGame()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
         }
 
         public void PassScene()

@@ -46,7 +46,7 @@ namespace C_Script.Player.StateModel
             var position = TransformOwner.position;
             _dashOriginalX = position.x;
             _dashOriginalY = position.y;
-            Collider2DOwner.enabled = false;
+            Collider2DOwner.isTrigger = true;
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
             _xLerp = 0;
@@ -63,7 +63,7 @@ namespace C_Script.Player.StateModel
         {
             base.Exit();
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezeRotation;
-            Collider2DOwner.enabled = true;
+            Collider2DOwner.isTrigger = false;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
             DashAsh.SetActive(false);
         }

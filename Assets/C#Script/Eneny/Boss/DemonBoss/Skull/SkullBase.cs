@@ -19,6 +19,7 @@ public class SkullBase : MonoBehaviour
     [SerializeField] private SkullState state;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float amount;
+    [SerializeField] private float distance;
     private int _trigger=0;
     private Transform _playerTrans;
     private Rigidbody2D _rigidbody2D;
@@ -44,23 +45,22 @@ public class SkullBase : MonoBehaviour
         {
             transform.localEulerAngles = new Vector3(0, 0, -transform.parent.localEulerAngles.z);
         }
-
         if (_timer > fireTime&&_trigger==0)
         {
             _collider2D.isTrigger = false;
             _trigger = 1;
             _animator.SetBool(Move,true);
-            _playerOriPos = _playerTrans.position;
-            Vector2 moveDir = (_playerOriPos - (Vector2)transform.position).normalized;
+            Vector2 moveDir = (_playerTrans.position -transform.position).normalized;
             _rigidbody2D.velocity = moveDir * moveSpeed;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Player")&&_trigger==1)
+        if (col.gameObject.CompareTag("Player"))
         {
             col.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage(amount,new Vector2(transform.eulerAngles.z>180? -1:1,0),ForceDirection.Forward);
+            Destroy(gameObject);
         }
     }
 }

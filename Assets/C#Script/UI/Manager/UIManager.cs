@@ -16,6 +16,9 @@ namespace C_Script.UI.Manager
             ScenesEventCentreManager.Instance.Subscribe(ScenesEventType.ReStart,OpenReStartMenu);
         }
         private void OpenExitMenu() => endMenu.SetActive(true);
-        private void OpenReStartMenu() => restartMenu.SetActive(true);
+        private void OpenReStartMenu()
+        {
+            restartMenu.SetActive(true);
+        }
     }
 }

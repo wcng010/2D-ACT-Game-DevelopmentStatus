@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using C_Script.Player.BaseClass;
 using C_Script.Player.Component;
+using C_Script.Player.MVC.Model;
 using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 
@@ -34,8 +35,11 @@ namespace C_Script.Player.StateModel.SupperState
         
         private void SwitchState()
         {
-            if(Owner.IsGroundOneRay)
+            if (Owner.IsGroundOneRay)
+            {
+                PlayerModel.PlayerAudioTrigger.LandPlay();
                 StateMachine.RevertOrinalState();
+            }
             RaycastHit2D headFrontHit2D= Owner.HeadFrontHit2D;
             RaycastHit2D bodyFrontHit2D = Owner.BodyFrontHit2D;
             if (!bodyFrontHit2D&&headFrontHit2D)

@@ -1,11 +1,14 @@
 ﻿using System;
+using Sirenix.Serialization;
 using Unity.Burst;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace C_Script.Model.Singleton
 {
      public class Singleton<T> : MonoBehaviour where T : Singleton<T>
-    {
+     { 
+         [SerializeField] private bool isSaveNextScene;
         private static T _instance;
         private static bool applicationIsQuitting = false;
         public static T Instance
@@ -37,6 +40,8 @@ namespace C_Script.Model.Singleton
             {
                 Destroy(gameObject);
             }
+            if (isSaveNextScene)
+                DontDestroyOnLoad(gameObject); 
         }
 
         protected void OnDestroy()

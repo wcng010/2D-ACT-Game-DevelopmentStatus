@@ -11,6 +11,9 @@ namespace C_Script.Player.State
         public override void Enter()
         {
             base.Enter();
+            Owner.gameObject.layer = LayerMask.NameToLayer("Default");
+            Owner.gameObject.tag = "Untagged";
+            Rigidbody2DOwner.velocity = Vector2.zero;
             ChangeColliderYSize(Collider2DOwner,PlayerData.DeathSizeY);
             //CombatEventCentreManager.Instance.Publish(EventType.PlayerDeath);
         }

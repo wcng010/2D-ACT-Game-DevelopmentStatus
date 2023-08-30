@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace C_Script.LevelSpecial.level_Start
 {

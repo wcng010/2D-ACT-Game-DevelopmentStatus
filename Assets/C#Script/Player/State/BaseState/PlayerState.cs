@@ -8,6 +8,7 @@ using C_Script.Eneny.Monster.Magician.Component;
 using C_Script.Model.BehaviourModel;
 using C_Script.Player.BaseClass;
 using C_Script.Player.Data;
+using C_Script.Player.MVC.Model;
 using UnityEngine;
 
 
@@ -23,6 +24,8 @@ namespace C_Script.Player.StateModel.BaseState
         protected PlayerData PlayerData => DataSo as PlayerData;
         protected SkillData SkillData => Owner.SkillBool;
         protected Dictionary<PlayerStateType, State<PlayerBase>> StateDictionary => Owner.PlayerStateDic;
+
+        protected PlayerModel PlayerModel => Model as PlayerModel;
         
         // ReSharper disable Unity.PerformanceAnalysis
         protected virtual void MoveBehaviour(float maxSpeedX,float accelerationX)

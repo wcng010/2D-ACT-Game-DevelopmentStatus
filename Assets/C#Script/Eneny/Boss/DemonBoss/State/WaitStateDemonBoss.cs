@@ -7,6 +7,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
     {
         public override void Enter()
         {
+            Owner.Factory.effect1.SetActive(false);
         }
         
         public override void PhysicExcute()

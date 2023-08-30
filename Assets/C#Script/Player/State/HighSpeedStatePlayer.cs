@@ -50,6 +50,7 @@ namespace C_Script.Player.StateModel
             PlayerData.SpeedUpbotton = false;
             PlayerData.WalkAshEffectTrriger = false;
             MoveAsh.SetActive(false);
+            PlayerModel.PlayerAudioTrigger.RunStop();
         }
         private void SwitchState()
         {

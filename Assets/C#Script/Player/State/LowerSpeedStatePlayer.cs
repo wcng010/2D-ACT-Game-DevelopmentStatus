@@ -38,6 +38,7 @@ namespace C_Script.Player.StateModel
 
         public override void Exit() {
             base.Exit();
+            PlayerModel.PlayerAudioTrigger.RunStop();
         }
         private void SwitchState()
         {
