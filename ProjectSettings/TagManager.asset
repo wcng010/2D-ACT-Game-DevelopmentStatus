@@ -9,9 +9,6 @@ TagManager:
   - BloodBar
   - ObjectPool
   - MoveAsh
-  - TurnAsh
-  - DashAsh
-  - JumpAsh
   - VCM
   - Foot
   - Enemy

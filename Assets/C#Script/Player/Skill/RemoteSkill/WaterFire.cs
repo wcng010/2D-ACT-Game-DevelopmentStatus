@@ -19,6 +19,8 @@ namespace C_Script.Player.Skill.RemoteSkill
         public float fireForce;
         [FoldoutGroup("Setting")] 
         public float amount;
+        [FoldoutGroup("Setting")] 
+        public float stunRate;
         private Animator _animator;
         private Rigidbody2D _rigidbody2D;
         private bool _isFire;
@@ -78,7 +80,7 @@ namespace C_Script.Player.Skill.RemoteSkill
             }
             if (col.CompareTag("Enemy")&&!_isBreak)
             {
-                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithPower(amount,new Vector2(transform.rotation.y>0? -1:1,0));
+                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithPower(amount,new Vector2(transform.rotation.y>0? -1:1,0),stunRate);
                 BreakDown();
             } 
         }

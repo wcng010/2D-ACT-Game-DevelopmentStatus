@@ -82,7 +82,7 @@ namespace C_Script.Player.StateModel.BaseState
                             //Invoke EnemyDamage to add Force And reduce health
                             hit.transform.GetComponentInChildren<EnemyHealth>().EnemyDamageWithPower(
                                 CalculateAttack(PlayerData.AttackPower, PlayerData.CriticalRate,
-                                    PlayerData.CriticalDamage), new Vector2(TransformOwner.localScale.x, 0));
+                                    PlayerData.CriticalDamage), new Vector2(TransformOwner.localScale.x, 0),PlayerData.StunRate);
                         }
                         //Wait AnimationFinshed And Change to Other State
                         yield return new WaitUntil(() => IsAniamtionFinshed);

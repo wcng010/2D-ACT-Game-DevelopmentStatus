@@ -63,7 +63,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             AnimatorOwner.SetBool(NameToTrigger,false);
             BossFactory.warningSign.SetActive(false);
             SwordScar.SetActive(false);
-            SwordSaintData.SkillButton1 = false;
             _comboFinished4 = false;
             SwordSaintData.IsHurt = false;
         }
@@ -101,7 +100,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             Owner.StartCoroutine(ComboBehaviour(_comboAnimName2,
                 new Vector2(SwordSaintData.Attack1Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack1Direction.y),ForceDirection.Up));
         }
-        
         private void Attack1AnimationFininsh()
         {
             
@@ -127,10 +125,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         {
             _comboFinished4 = true;
         }
-
-
-
-
+        
         private void SwordScarChange(string TriggerName,Vector3 RelativePos)
         {
             if (_skillButtonInternal == 1)

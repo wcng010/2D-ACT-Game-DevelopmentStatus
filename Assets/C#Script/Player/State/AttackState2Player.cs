@@ -10,7 +10,6 @@ namespace C_Script.Player.StateModel
         private static readonly int Attack2 = Animator.StringToHash("Attack2");
         private static readonly int Attack1 = Animator.StringToHash("Attack1");
         private static readonly int Count = Animator.StringToHash("Count");
-        
         public override void Enter()
         {
             base.Enter();
@@ -19,7 +18,6 @@ namespace C_Script.Player.StateModel
             Rigidbody2DOwner.velocity = new Vector2(0, 0);
             Owner.StartCoroutine(WaitForLastAnimation());
         }
-
         /// <summary>
         /// 由于从Attack1到Attack2时，Attack2添加协程等待Attack1动画播完，
         /// 所以AnimatorIsPlaying会因为当前播放的动画不是Attack2的动画而跳出状态，这不是我们想要的。
@@ -33,14 +31,12 @@ namespace C_Script.Player.StateModel
             AnimatorOwner.SetInteger(Count,0);
             Time.timeScale = 1;
         }
-        
         protected virtual void AdjustPosition(Transform playertrans)
         {
             Vector2 point = playertrans.position;
             playertrans.position 
                 = new Vector3((point.x + 0.25f*playertrans.localScale.x), point.y, 0);
         }
-
         /// <summary>
         /// 协程延迟Attack2的
         /// </summary>

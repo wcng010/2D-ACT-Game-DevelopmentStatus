@@ -65,7 +65,6 @@ namespace C_Script.UI.ScenesBloodBars
         private IEnumerator ChangState()
         {
             _bossFactory.changeTimeline.Play();
-            _bossFactory.effect2.SetActive(true);
             CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerStop);
             CombatEventCentreManager.Instance.Publish(CombatEventType.EnemyStop);
             yield return new WaitForSecondsRealtime(_bossFactory.bossChangeTime);
@@ -87,7 +86,7 @@ namespace C_Script.UI.ScenesBloodBars
             _bossDataSo.IsDeath = true;
             _bossEnter2 = true;
             _bossFactory.DefeatBoss();
-            if(SceneManager.GetActiveScene().buildIndex+1>SceneManager.sceneCountInBuildSettings)
+            if(SceneManager.GetActiveScene().buildIndex+1 > SceneManager.sceneCountInBuildSettings) 
                 ScenesEventCentreManager.Instance.Publish(ScenesEventType.GameOver);
             enabled = false;
         }

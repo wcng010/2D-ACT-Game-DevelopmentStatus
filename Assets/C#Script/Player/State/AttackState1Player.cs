@@ -17,7 +17,7 @@ namespace C_Script.Player.StateModel
             var vec = Rigidbody2DOwner.velocity;
             Rigidbody2DOwner.velocity = new Vector2(0, vec.y/2);
             Owner.StartCoroutine(AttackRayTestWithoutPower(PlayerData.Attack1Range, AnimationTime,Collider2DOwner.size.y/2));
-            if(SkillData.skillBools[0])
+            if(SkillData.skillBools["WaterWave"])
                 OwnerCore.GetCoreComponent<ObjectComponent>().FireObject("WaterFire",TransformOwner);
         }
         public override void LogicExcute()

@@ -16,7 +16,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         {
             base.Enter();
             Rigidbody2DOwner.velocity = Vector2.zero;
-            Owner.StartCoroutine(AttackBehaviour(new Vector2(SwordSaintData.Attack2Direction.x *TransformOwner.localScale.x 
+            Owner.StartCoroutine(AttackBehaviour(new Vector2(SwordSaintData.Attack2Direction.x*TransformOwner.localScale.x 
                 ,SwordSaintData.Attack2Direction.y),ForceDirection.Down));
         }
 

@@ -1,21 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public partial class Test : MonoBehaviour
+namespace C_Script.Test
 {
-    public float length;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class Test : MonoBehaviour
     {
-      Debug.Log(Quaternion.AngleAxis(90,Vector3.back)*new Vector3(1,0,0));
-    }
+        private void Awake()
+        {
+            Debug.Log("Awake");
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void OnEnable()
+        {
+            Debug.Log("OnEnable");
+        }
+
+        void Start()
+        {
+            Debug.Log("Start");
+        }
+
+        private void OnDisable()
+        {
+            Debug.Log("OnDisable");
+        }
+
+        private void OnDestroy()
+        {
+            Debug.Log("OnDestroy");
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using C_Script.BaseClass;
 using C_Script.Common.Model.EventCentre;
 using C_Script.Eneny.Monster.Magician.Data;
@@ -18,7 +19,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             base.Enter();
             Rigidbody2DOwner.velocity = Vector2.zero;
             Owner.StartCoroutine(AttackBehaviour
-                (new Vector2(SwordSaintData.Attack1Direction.x *TransformOwner.localScale.x ,SwordSaintData.Attack1Direction.y),ForceDirection.Up));
+                (new Vector2(SwordSaintData.Attack1Direction.x*TransformOwner.localScale.x ,SwordSaintData.Attack1Direction.y),ForceDirection.Up));
         }
 
         public override void LogicExcute()

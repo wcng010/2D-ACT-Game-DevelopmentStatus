@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Player.BaseClass;
 using C_Script.Player.Component;
 using C_Script.Player.StateModel.BaseState;
@@ -23,17 +24,11 @@ namespace C_Script.Player.StateModel
         private float _dashLength;
         private float _xLerp;
         private DashState Dash;//0->Can't,1->Can
-        
-        private GameObject DashAsh { 
-            get {
-                if(!_dashAsh)
-                    _dashAsh = GameObject.FindWithTag(nameof(DashAsh));
-                return _dashAsh;
-            } }
-        private GameObject _dashAsh;
-        
+        private readonly string _dashAsh;
+
         public override void Enter()
         {
+            SkillData.skillBools["Dash"] = true;
             base.Enter();
             _dashLength = PlayerData.DashLength;
             //There are obstacles ahead
@@ -50,7 +45,7 @@ namespace C_Script.Player.StateModel
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
             _xLerp = 0;
-            DashAsh.SetActive(true);
+            MyObjectPool.Instance.SetActive(_dashAsh);
         }
         public override void LogicExcute()
         {
@@ -65,7 +60,6 @@ namespace C_Script.Player.StateModel
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezeRotation;
             Collider2DOwner.isTrigger = false;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
-            DashAsh.SetActive(false);
         }
         private IEnumerator ReviseDashPoint()
         {
@@ -85,8 +79,8 @@ namespace C_Script.Player.StateModel
 
         public DashStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
-            _dashAsh = DashAsh;
-            DashAsh.SetActive(false);
+            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.DashAsh,PlayerModel.ObjectPool));
+            _dashAsh = PlayerData.DashAsh.name;
         }
     }
 }

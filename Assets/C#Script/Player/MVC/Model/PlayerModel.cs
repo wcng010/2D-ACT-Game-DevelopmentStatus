@@ -17,5 +17,6 @@ namespace C_Script.Player.MVC.Model
         [field: FoldoutGroup("Custom")] [field: SerializeField] public SkillData SkillData { get; private set; }
 
         [field: FoldoutGroup("Custom")] [field: SerializeField] public PlayerAudioTrigger PlayerAudioTrigger { get; private set; }
+        [field: FoldoutGroup("Custom")] [field: SerializeField] public Transform ObjectPool { get; private set; }
     }
 }

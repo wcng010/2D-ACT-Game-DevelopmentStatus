@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using C_Script.Player.Data;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,12 +10,12 @@ namespace C_Script.UI.SkillBar
     public class SkillCool : MonoBehaviour
     {
         [SerializeField] private float coolDown;
-        [SerializeField] private int skillIndex;
+        [SerializeField] private string skillName;
         [SerializeField] private KeyCode keyCode;
         private SkillData _data;
         private float _timer;
         private Image _image;
-
+        private int _trigger=0;
         private void Awake()
         {
             _image = GetComponent<Image>();
@@ -26,22 +27,30 @@ namespace C_Script.UI.SkillBar
         {
             if (Input.GetKeyDown(keyCode))
             {
-                _data.skillBools[skillIndex] = true;
+                _data.skillBools[skillName] = true;
             }
 
-            if (_data.skillBools[skillIndex])
+            if (_data.skillBools[skillName])
             {
-                _timer -= Time.deltaTime;
-                _image.fillAmount = _timer / coolDown;
+                if (_trigger == 0)
+                {
+                    _timer -= Time.deltaTime;
+                    _image.fillAmount = _timer / coolDown;
+                }
                 if (_timer < 0)
                 {
-                    _data.skillBools[skillIndex] = false;
+                    _trigger = 1;
                 }
-            }
-            else if (!_data.skillBools[skillIndex]&&_timer<coolDown)
-            {
-                _timer += Time.deltaTime;
-                _image.fillAmount = _timer / coolDown;
+                if(_trigger == 1)
+                {
+                    _timer += Time.deltaTime;
+                    _image.fillAmount = _timer / coolDown;
+                    if (Math.Abs((_image.fillAmount = _timer / coolDown) - 1) < 0.01)
+                    {
+                        _data.skillBools[skillName] = false;
+                        _trigger = 0;
+                    }
+                }
             }
         }
     }

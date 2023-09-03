@@ -1,5 +1,7 @@
 ﻿using C_Script.BaseClass;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Eneny.Boss.DemonBoss.BaseClass;
+using C_Script.Eneny.Boss.DemonBoss.Model;
 using C_Script.Eneny.Boss.DemonBoss.State.StateBase;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
 using C_Script.Player.StateModel.BaseState;
@@ -9,6 +11,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
 {
     public class IdleStateDemonBoss:DemonBossState
     {
+        private int _isFirstEnter = 0;
         private Transform EnergyBar=>Owner.Factory.bossEnergyBar.transform;
         private float _timer;
         private float _readyTime;
@@ -17,11 +20,20 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
         
         public override void Enter()
         {
+            if (_isFirstEnter == 0)
+            {
+                GameObject.Instantiate(DemonBossData.SkullCircle, TransformOwner);
+                _isFirstEnter = 1;
+            }
+            else
+            {
+                BigObjectPool.Instance.SetActive(ObjectType.Skull);
+            }
             EnergyBar.parent.gameObject.SetActive(true);
             _readyTime = DemonBossData.ReadyTime;
             _timer = 0;
             _barPosOri = EnergyBar.localPosition;
-            _bossPosOri = Owner.Factory.bossPos;
+            _bossPosOri = DemonBossData.OriginPos;
             TransformOwner.position = new Vector3(_bossPosOri.x, _bossPosOri.y, 0);
         }
 
@@ -55,6 +67,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
 
         public IdleStateDemonBoss(DemonBossBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
+            
         }
     }
 }

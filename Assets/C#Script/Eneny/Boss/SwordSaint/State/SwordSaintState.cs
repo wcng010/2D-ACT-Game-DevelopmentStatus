@@ -24,7 +24,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
            
         }
         
-        protected IEnumerator AttackBehaviour(Vector2 ForceDir,ForceDirection forceDirection)
+        protected IEnumerator AttackBehaviour(Vector2 forceDir,ForceDirection forceDirection)
         {
             if(StateMachine.CurrentState!=this||IsAniamtionFinshed) yield break;
             yield return new WaitUntil(() => IsAnimationName);
@@ -37,7 +37,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
                 {
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
                     (CalculateAttack(SwordSaintData.AttackPower,SwordSaintData.CriticalRate,SwordSaintData.CriticalDamage),
-                        ForceDir,forceDirection);
+                        forceDir,forceDirection);
                     //Player enter hurtState
                     CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield break;

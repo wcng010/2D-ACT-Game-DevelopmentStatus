@@ -20,8 +20,8 @@ namespace C_Script.Eneny.Boss.SwordSaint
 
         [field: FoldoutGroup("AttackState")] [field: SerializeField] public bool SkillButton1 { get; set; }
 
-        [NonSerialized]public Vector2 Attack1Direction = new Vector2(Mathf.Cos(75),Mathf.Sin(75));
-        [NonSerialized]public Vector2 Attack2Direction = new Vector2(Mathf.Sin(-75), Mathf.Cos(-75));
+        [NonSerialized]public Vector2 Attack1Direction = new Vector2(Mathf.Cos(1.31f),Mathf.Sin(1.31f));
+        [NonSerialized]public Vector2 Attack2Direction = new Vector2(Mathf.Cos(1.31f), Mathf.Sin(-1.31f));
         [NonSerialized]public Vector2 Attack3Direction = new Vector2(1, 0);
     }
 }

@@ -2,65 +2,68 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using C_Script.BaseClass;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Player.Component;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class SkullBase : MonoBehaviour
 {
-    enum SkullState
-    {
-        AnimationState,
-        CommonState
-    }
-
+    
     private float _timer;
     [SerializeField] private float fireTime;
-    [SerializeField] private SkullState state;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float amount;
-    [SerializeField] private float distance;
+    [SerializeField] private float DeathTime;
+    private Vector2 _originPos;
     private int _trigger=0;
+    
+    private Transform PlayerTrans => _playerTrans? _playerTrans : _playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
     private Transform _playerTrans;
-    private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D Rb => _rb? _rb : _rb = GetComponent<Rigidbody2D>();
+    private Rigidbody2D _rb;
+    private Animator Antor => _animator ? _animator : _animator = GetComponent<Animator>();
     private Animator _animator;
-    private Collider2D _collider2D;
-    private Vector2 _playerOriPos;
+
     private static readonly int Move = Animator.StringToHash("Move");
 
-    void Start()
+    private void Awake()
     {
-        _playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _collider2D = GetComponent<Collider2D>();
-        _collider2D.isTrigger = true;
+        _originPos = transform.position;
+        BigObjectPool.Instance.PushObject(ObjectType.Skull,gameObject);
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        _timer = 0;
+        _trigger = 0;
+        transform.position = _originPos;
+    }
+
+
     void Update()
     {
         _timer += Time.deltaTime;
-        if (state == SkullState.AnimationState)
-        {
-            transform.localEulerAngles = new Vector3(0, 0, -transform.parent.localEulerAngles.z);
-        }
+        transform.localEulerAngles = new Vector3(0, 0, -transform.parent.localEulerAngles.z);
         if (_timer > fireTime&&_trigger==0)
         {
-            _collider2D.isTrigger = false;
             _trigger = 1;
-            _animator.SetBool(Move,true);
-            Vector2 moveDir = (_playerTrans.position -transform.position).normalized;
-            _rigidbody2D.velocity = moveDir * moveSpeed;
+            Antor.SetBool(Move,true);
+            Vector2 moveDir = (PlayerTrans.position -transform.position).normalized;
+            Rb.velocity = moveDir * moveSpeed;
+        }
+        if (_timer > DeathTime)
+        {
+            gameObject.SetActive(false);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D col)
+    
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player")&&_trigger == 1)
         {
             col.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage(amount,new Vector2(transform.eulerAngles.z>180? -1:1,0),ForceDirection.Forward);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

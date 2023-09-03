@@ -23,7 +23,7 @@ MonoBehaviour:
   <CoolDown>k__BackingField: 1
   <HitForceUp>k__BackingField: 0
   <HitForceDown>k__BackingField: 0
-  <HitForceForward>k__BackingField: 0
+  <HitForceForward>k__BackingField: 150
   <IsDeath>k__BackingField: 0
   <IsHurt>k__BackingField: 0
   <IsDebug>k__BackingField: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   <SwordScarRelativePos2>k__BackingField: {x: -0.58, y: 0.06}
   <SwordScarRelativePos3>k__BackingField: {x: 0.36, y: 0.06}
   <SwordScar>k__BackingField: {fileID: 9095191892400008366, guid: 0f5e7e658e906de40a14c283fe62067b, type: 3}
+  <SkillButton1>k__BackingField: 1

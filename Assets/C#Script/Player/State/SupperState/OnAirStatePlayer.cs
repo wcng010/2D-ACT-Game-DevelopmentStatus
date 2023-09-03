@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Player.BaseClass;
 using C_Script.Player.Component;
 using C_Script.Player.MVC.Model;
@@ -10,7 +11,7 @@ namespace C_Script.Player.StateModel.SupperState
     public class OnAirStatePlayer : PlayerState
     {
         // ReSharper disable Unity.PerformanceAnalysis
-
+        private string _fallAsh;
         public override void Enter()
         {
             base.Enter();
@@ -38,6 +39,7 @@ namespace C_Script.Player.StateModel.SupperState
             if (Owner.IsGroundOneRay)
             {
                 PlayerModel.PlayerAudioTrigger.LandPlay();
+                MyObjectPool.Instance.SetActive(_fallAsh);
                 StateMachine.RevertOrinalState();
             }
             RaycastHit2D headFrontHit2D= Owner.HeadFrontHit2D;
@@ -49,7 +51,7 @@ namespace C_Script.Player.StateModel.SupperState
             }
             if(Input.GetKeyDown(KeyCode.J)&& PressJKeyCount==0)
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.AttackState1Player]);
-            if(Input.GetKeyDown(KeyCode.Q))
+            if(Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DashStatePlayer]);
         }
         
@@ -59,9 +61,12 @@ namespace C_Script.Player.StateModel.SupperState
             Vector2 revisionPoint = hitPoint + (Vector2)TransformOwner.position - handPoint;
             TransformOwner.position = revisionPoint;
         }
+        
 
         public OnAirStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
+            MyObjectPool.Instance.PushObject(GameObject.Instantiate( PlayerData.FallAsh, PlayerModel.ObjectPool));
+            _fallAsh = PlayerData.FallAsh.name;
         }
     }
 }

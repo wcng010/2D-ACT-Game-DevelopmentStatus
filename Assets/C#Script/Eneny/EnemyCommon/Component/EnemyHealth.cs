@@ -27,11 +27,12 @@ namespace C_Script.Eneny.EnemyCommon.Component
             _effect1 = Instantiate(HitEffect2, transform.parent.parent, true); 
             _effect1.transform.localPosition = new Vector3(0,EnemyData.HitEffectOffSetY,0);
         }
-        public void EnemyDamageWithPower(float amount, Vector2 forceVector2)
+        public void EnemyDamageWithPower(float amount, Vector2 forceVector2,float stunRate)
         {
-            EnemyData.IsHurt = true;
+            if(Random.value<stunRate)
+                EnemyData.IsHurt = true;
             CommonDamage(amount);
-            Rb.AddForce(new Vector2(forceVector2.x,2.5f).normalized*EnemyData.HitForceForward,ForceMode2D.Impulse);
+            Rb.AddForce(new Vector2(forceVector2.x,0).normalized*EnemyData.HitForceForward,ForceMode2D.Impulse);
             if(_effect2) Destroy(_effect2);
             _effect2 = Instantiate(HitEffect1, transform.parent.parent, true);
             _effect2.transform.localPosition = new Vector3(0,EnemyData.HitEffectOffSetY,0);

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Player.BaseClass;
 using C_Script.Player.Component;
 using C_Script.Player.StateModel.BaseState;
-using TMPro;
 using UnityEngine;
-namespace C_Script.Player.StateModel
+
+namespace C_Script.Player.State
 {
     public class JumpStatePlayer:PlayerState
     {
@@ -18,27 +17,14 @@ namespace C_Script.Player.StateModel
         private readonly Transform _ashParent;
         private readonly Vector2 _ashPos;
         private RaycastHit2D _headRaycastHit2D;
-        private GameObject _jumpAsh;
-        public GameObject JumpAsh
-        {
-            get
-            {
-                if (!_jumpAsh)
-                    _jumpAsh = GameObject.FindWithTag("JumpAsh");
-                return _jumpAsh;
-            }
-        }
-        
+        private readonly string _jumpAsh;
+
+
         public override void Enter() 
         {   base.Enter();
             _isSpeedUp = true;
             Owner.StartCoroutine(JumpChange());
-            if (JumpAsh.transform.parent != _ashParent)
-            {   JumpAsh.transform.SetParent(_ashParent);
-                JumpAsh.transform.localPosition = _ashPos;
-            }
-            JumpAsh.SetActive(true);
-            JumpAsh.transform.SetParent(JumpAsh.transform.root);
+            MyObjectPool.Instance.SetActive(_jumpAsh);
         }
 
         public override void PhysicExcute()
@@ -67,18 +53,9 @@ namespace C_Script.Player.StateModel
         public override void Exit()
         {
             base.Exit();
-            Owner.StartCoroutine(CloseJumpAsh());
         }
 
-        IEnumerator CloseJumpAsh()
-        {
-            var animator = JumpAsh.GetComponent<Animator>();
-            yield return new WaitUntil(() =>
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95||Owner.IsGroundThreeRays);
-            JumpAsh.transform.SetParent(_ashParent);
-            JumpAsh.transform.localPosition = _ashPos;
-            JumpAsh.SetActive(false);
-        }
+
         /*protected override void MoveBehaviour(float speed)
         {
             
@@ -134,7 +111,7 @@ namespace C_Script.Player.StateModel
            }
            if(Input.GetKeyDown(KeyCode.J)&& PressJKeyCount==0)
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.AttackState1Player]);
-           if(Input.GetKeyDown(KeyCode.Q))
+           if(Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DashStatePlayer]);
        }
        
@@ -147,9 +124,8 @@ namespace C_Script.Player.StateModel
 
        public JumpStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
        {
-           _ashParent = JumpAsh.transform.parent;
-           _ashPos = JumpAsh.transform.localPosition;
-           JumpAsh.SetActive(false);
+            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.JumpAsh,PlayerModel.ObjectPool));
+            _jumpAsh = PlayerData.JumpAsh.name;
        }
     }
 }

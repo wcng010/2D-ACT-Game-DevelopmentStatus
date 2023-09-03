@@ -20,7 +20,6 @@ namespace C_Script.Eneny.EnemyCreator
         [FoldoutGroup("外部信息")] public float playerEnterTime;
         [FoldoutGroup("外部信息")] public float playerStopTime;
         [FoldoutGroup("外部信息")] public float bossChangeTime;
-        [FoldoutGroup("外部信息")] public Vector2 bossPos;
         [FoldoutGroup("外部信息")] public GameObject warningSign;
         [FoldoutGroup("外部信息")] public GameObject bossViewCamera;
         [FoldoutGroup("外部信息")] public GameObject passWay;
@@ -28,7 +27,8 @@ namespace C_Script.Eneny.EnemyCreator
         [FoldoutGroup("Bar")] public GameObject bossEnergyBar;
         [FoldoutGroup("AttackEffect")] public GameObject effect1;
         [FoldoutGroup("AttackEffect")] public GameObject effect2;
-
+        [field:SerializeField][field:FoldoutGroup("外部信息")] public GameObject RenderingLight { get; private set; }
+        [field:SerializeField][field:FoldoutGroup("外部信息")] public GameObject BossLight { get; private set; }
         private void OnEnable()
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnterBossRoom,EnterBossRoom);
@@ -46,10 +46,13 @@ namespace C_Script.Eneny.EnemyCreator
         private void EnterBossRoom()
         {
             bossViewCamera.SetActive(true);
+            RenderingLight.SetActive(false);
             bossObj.SetActive(true);
             borderLeft.SetActive(true);
             borderRight.SetActive(true);
             bossHealthBar.SetActive(true);
+            if(BossLight)
+                BossLight.SetActive(true);
             if (startTimeline)
             {
                 startTimeline.Play();
@@ -72,6 +75,9 @@ namespace C_Script.Eneny.EnemyCreator
             borderLeft.SetActive(false);
             borderRight.SetActive(false);
             bossHealthBar.SetActive(false);
+            if(BossLight)
+                BossLight.SetActive(false);
+            RenderingLight.SetActive(true);
             if(effect1)
                 effect1.SetActive(false);
             if(effect2)

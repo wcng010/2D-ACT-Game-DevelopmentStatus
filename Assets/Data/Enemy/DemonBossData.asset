@@ -38,4 +38,6 @@ MonoBehaviour:
   <FirstDeath>k__BackingField: 0
   <IsTwoLives>k__BackingField: 1
   <WarningSign>k__BackingField: {fileID: 0}
-  <ReadyTime>k__BackingField: 4
+  <ReadyTime>k__BackingField: 6
+  <OriginPos>k__BackingField: {x: 32.5, y: -3.69}
+  <SkullCircle>k__BackingField: {fileID: 3477280648110825932, guid: 0da30a442097ba747bfb86cbca19397e, type: 3}

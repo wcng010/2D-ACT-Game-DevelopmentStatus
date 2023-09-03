@@ -76,7 +76,7 @@ namespace C_Script.Player.StateModel
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.RollStatePlayer]);
             }
             //Dash
-            else if (Input.GetKeyDown(KeyCode.Q))
+            else if (Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.DashStatePlayer]);
             }

@@ -17,7 +17,7 @@ MonoBehaviour:
   <AttackPower>k__BackingField: 10
   <Defense>k__BackingField: 5
   <CriticalRate>k__BackingField: 0.5
-  <CriticalDamage>k__BackingField: 1
+  <CriticalDamage>k__BackingField: 1.5
   <Level>k__BackingField: 1
   <GradeIncrease>k__BackingField: 0.3
   <CoolDown>k__BackingField: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   <MaxSpeedX>k__BackingField: 2
   <AccelerationX>k__BackingField: 30
   <DeAcceleration>k__BackingField: 45
-  <DashLength>k__BackingField: 3
+  <DashLength>k__BackingField: 1.5
   <DashSpeed>k__BackingField: 3
   <YSpeedUpTime>k__BackingField: 0.3
   <AccelerationY>k__BackingField: 300
@@ -56,3 +56,8 @@ MonoBehaviour:
   <Deceleration>k__BackingField: 3.5
   <PlayerWounded>k__BackingField: {fileID: 1082149952092684782, guid: e06aa1800526dd745adc0931128d88db, type: 3}
   <WoudedEffectOffSetY>k__BackingField: 0
+  <StunRate>k__BackingField: 0.5
+  <FallAsh>k__BackingField: {fileID: 3997462205704453838, guid: 2124a004b15ac004cafb02e223881d90, type: 3}
+  <JumpAsh>k__BackingField: {fileID: 205662158833753469, guid: c7275bcdb46029b48988c3970a08b71a, type: 3}
+  <TurnAroundAsh>k__BackingField: {fileID: 4232988749712398985, guid: ed4ad79e06971d44b97efc1d2205390f, type: 3}
+  <DashAsh>k__BackingField: {fileID: 1869902095166616264, guid: e2be117f6fe91f248805dba65c683b11, type: 3}

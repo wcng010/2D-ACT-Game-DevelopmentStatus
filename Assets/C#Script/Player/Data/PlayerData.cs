@@ -38,6 +38,8 @@ namespace C_Script.Player.Data
         
         [field: FoldoutGroup("MoveInfo")] [field: SerializeField] public float DeAcceleration{ get; private set; }
         [field: FoldoutGroup("MoveInfo")]  public bool SpeedUpbotton { get; set; }
+
+        [field: FoldoutGroup("DashInfo")] [field: SerializeField] public bool CanDash { get; private set; }
         [field: FoldoutGroup("DashInfo")] [field:SerializeField] public float DashLength { get; private set; }
         [field: FoldoutGroup("DashInfo")] [field: SerializeField] public float DashSpeed { get; private set; }
         [field: FoldoutGroup("JumpInfo")] [field: SerializeField] public float YSpeedUpTime{ get; private set; }
@@ -53,6 +55,13 @@ namespace C_Script.Player.Data
         [field: FoldoutGroup("TurnAroundInfo")] [field: SerializeField] public float Deceleration { get; private set; }
         [field: FoldoutGroup("Effect")] [field: SerializeField] public GameObject PlayerWounded{ get; private set; }
         [field: FoldoutGroup("Effect")] [field: SerializeField] public float WoudedEffectOffSetY{ get; private set; }
+
+        [field: FoldoutGroup("CombatMessage")] [field: SerializeField] [field:Range(0,1)] public float StunRate { get; private set; }
+        
+        [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject FallAsh { get; private set; }
+        [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject JumpAsh { get; private set; }
+        [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject TurnAroundAsh { get; private set; }
+        [field: FoldoutGroup("Prefabs")] [field: SerializeField] public GameObject DashAsh { get; private set; }
         public bool WalkAshEffectTrriger { get; set; }
 
     }

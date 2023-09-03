@@ -1,24 +1,20 @@
-﻿using C_Script.Player.BaseClass;
+﻿using C_Script.Common.Model.ObjectPool;
+using C_Script.Player.BaseClass;
 using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 namespace C_Script.Player.StateModel
 {
     public class TurnAroundStatePlayer : PlayerState
     {
-        private float DeceVelocity;
-        private GameObject TurnAsh { 
-            get {
-                if(!_turnAsh)
-                    _turnAsh = GameObject.FindWithTag(nameof(TurnAsh));
-                return _turnAsh;
-            } }
-        private GameObject _turnAsh;
+        private float _deceVelocity;
+        private readonly string _turnAroundAsh;
+
         
         public override void Enter()
         {
             base.Enter();
-            DeceVelocity = Rigidbody2DOwner.velocity.x;
-            _turnAsh.SetActive(true);
+            _deceVelocity = Rigidbody2DOwner.velocity.x;
+            MyObjectPool.Instance.SetActive(_turnAroundAsh);
         }
 
         public override void PhysicExcute()
@@ -29,21 +25,20 @@ namespace C_Script.Player.StateModel
 
         private void Retardance()
         {
-            DeceVelocity = Mathf.Lerp(DeceVelocity,PlayerData.DecelerationSpeed,Time.fixedDeltaTime*PlayerData.Deceleration);
-            Rigidbody2DOwner.velocity = new Vector2(DeceVelocity, Rigidbody2DOwner.velocity.y);
+            _deceVelocity = Mathf.Lerp(_deceVelocity,PlayerData.DecelerationSpeed,Time.fixedDeltaTime*PlayerData.Deceleration);
+            Rigidbody2DOwner.velocity = new Vector2(_deceVelocity, Rigidbody2DOwner.velocity.y);
         }
 
         public override void Exit()
         {
             base.Exit();
             TransformOwner.localScale = new Vector3(-TransformOwner.localScale.x, 1, 1);
-            _turnAsh.SetActive(false);
         }
         
         public TurnAroundStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
-            _turnAsh = GameObject.FindWithTag(nameof(TurnAsh));
-            _turnAsh.SetActive(false);
+            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.TurnAroundAsh,PlayerModel.ObjectPool));
+            _turnAroundAsh = PlayerData.TurnAroundAsh.name;
         }
     }
 }
