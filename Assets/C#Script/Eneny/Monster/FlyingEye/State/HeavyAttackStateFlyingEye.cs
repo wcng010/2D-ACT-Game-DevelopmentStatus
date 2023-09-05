@@ -31,21 +31,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
         
         private void SwitchState()
         {
-            if (FlyingEyeData.IsDeath)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsHurt)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-                return;
-            }
             _toTargetVector2 =  TargetTrans.position - TransformOwner.position;
         }
         
@@ -64,8 +49,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
                     (CalculateAttack(FlyingEyeData.AttackPower,FlyingEyeData.CriticalRate,FlyingEyeData.CriticalDamage),
                         _toTargetVector2,ForceDirection.Forward);
-                    //Player enter hurtState
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield break;
                 }
                 yield return new WaitForSeconds(0.05f);

@@ -16,7 +16,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
         {
             base.Exit();
             Rigidbody2DOwner.velocity = Vector2.zero;
-            FlyingEyeData.IsHurt = false;
         }
 
         public HurtStateFlyingEye(FlyingEyeBase owner, string nameToTrigger, string animationName) : base(owner, nameToTrigger, animationName)

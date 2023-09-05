@@ -13,16 +13,23 @@ namespace C_Script.BaseClass
         public StateMachine<T> StateMachine{ get; protected set; }
         public AttackObjectDataSo DataSo { get; protected set; }
         public Model Model { get; private set; }
-
         public Core Core{ get; private set; }
         //初始化起始状态
-        public abstract void InitOriginState();
+        protected abstract void InitOriginState();
         //状态字典
-        public abstract void InitStateDictionary();
+        protected abstract void InitStateDictionary();
         //选择状态
-        public abstract void SwitchState();
+        protected abstract void SwitchState();
         //初始化数据内容
-        public abstract void InitDataSetting();
+        protected abstract void InitDataSetting();
+
+        #region Event
+
+        public abstract void HurtEvent();
+
+        public abstract void DeathEvent();
+
+        #endregion
         //物理步
         public virtual void PhysicBehaviour()
         {

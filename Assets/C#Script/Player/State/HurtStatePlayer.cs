@@ -12,12 +12,6 @@ namespace C_Script.Player.State
             base.Enter();
             if (PlayerData.CurrentHealth <= 0)
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DeathStatePlayer]);
-            CombatEventCentreManager.Instance.Publish(CombatEventType.CameraShake);
-        }
-        public override void LogicExcute()
-        {
-            if (!IsAnimationName) return;
-            base.LogicExcute();
         }
         public HurtStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {

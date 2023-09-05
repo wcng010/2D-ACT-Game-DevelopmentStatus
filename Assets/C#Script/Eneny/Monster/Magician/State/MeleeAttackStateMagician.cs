@@ -57,8 +57,6 @@ namespace C_Script.Eneny.Monster.Magician.State
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
                         (CalculateAttack(MagicianData.AttackPower,MagicianData.CriticalRate,MagicianData.CriticalDamage),
                             Quaternion.AngleAxis(MagicianData.MeleeAttackAngle,_toTargetVector2.x>0?Vector3.forward:Vector3.back)*_toTargetVector2 ,ForceDirection.Up);
-                    //Player enter hurtState
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield break;
                 }
                 yield return new WaitForSeconds(0.05f);
@@ -72,18 +70,6 @@ namespace C_Script.Eneny.Monster.Magician.State
         private void SwitchState()
         {
             _toTargetVector2 = TargetTrans.position-TransformOwner.position;
-            if (MagicianData.IsDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
-            }
-            else if (MagicianData.IsHurt)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
-            }
-            else if (MagicianData.IsTargetDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[MagicianData.OriginState]);
-            }
         }
     }
 }

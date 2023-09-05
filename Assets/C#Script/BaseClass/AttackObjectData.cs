@@ -21,8 +21,8 @@ namespace C_Script.BaseClass
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float HitForceUp { get; set; }
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float HitForceDown { get; set; }
         [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public float HitForceForward { get; set; }
-        [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public bool IsDeath { get; set;}
-        [field: FoldoutGroup("CombatMessage")] [field: SerializeField] public bool IsHurt { get; set; }
+        //[field: FoldoutGroup("CombatMessage")] [field: SerializeField] public bool IsDeath { get; set;}
+        //[field: FoldoutGroup("CombatMessage")] [field: SerializeField] public bool IsHurt { get; set; }
         [field: FoldoutGroup("DebugUsage")] [field: SerializeField] public bool IsDebug { get; private set; }
     }
 }

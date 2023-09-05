@@ -14,12 +14,16 @@ namespace C_Script.Eneny.Boss.SwordSaint
         public SwordSaintModel SwordSaintModel => _model? _model : _model = GetComponentInParent<SwordSaintModel>();
         
         private SwordSaintModel _model;
+
+        public SwordSaintView SwordSaintView => _view ? _view : _view = SwordSaintModel.View as SwordSaintView;
+        
+        private SwordSaintView _view;
         
         private bool _isPlayerDeath;
         public BossFactory Factory => _factory? _factory: _factory = transform.GetComponentInParent<BossFactory>();
         
         private BossFactory _factory;
-        private SwordSaintData SwordSaomtData =>SwordSaintModel.EnemyData as SwordSaintData;
+        private SwordSaintData SwordSaintData =>SwordSaintModel.EnemyData as SwordSaintData;
         
         public readonly Dictionary<EnemyStateType, State<SwordSaintBase>> SwordSaintStateDic = new();
 
@@ -34,13 +38,11 @@ namespace C_Script.Eneny.Boss.SwordSaint
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStop,DemonBossStop);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AfterPlayerDeath);
+            SwordSaintView.EnemyHurt.AddListener(HurtEvent);
+            SwordSaintView.EnemyDeath.AddListener(DeathEvent);
         }
-
-        private void Start()
-        {
-            
-        }
-
+        
         private void FixedUpdate()
         {
             PhysicBehaviour();
@@ -55,6 +57,9 @@ namespace C_Script.Eneny.Boss.SwordSaint
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStop,DemonBossStop);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AfterPlayerDeath);
+            SwordSaintView.EnemyHurt.RemoveListener(HurtEvent);
+            SwordSaintView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
         {
@@ -63,7 +68,7 @@ namespace C_Script.Eneny.Boss.SwordSaint
             InitCollider2D(SwordSaintModel.EnemyCapCollider2D);
             InitCore(SwordSaintModel.EnemyCore);
             InitTransform(SwordSaintModel.EnemyTrans);
-            InitData(SwordSaomtData);
+            InitData(SwordSaintData);
             InitModel(SwordSaintModel);
         }
         private void InitDemonBoss()
@@ -71,14 +76,14 @@ namespace C_Script.Eneny.Boss.SwordSaint
             InitStateDictionary();
             InitOriginState();
         }
-        public override void InitOriginState()
+        protected override void InitOriginState()
         {
             StateMachine.SetPreviousState(null);
             StateMachine.SetGlobalState(null);
-            StateMachine.SetOriginalState(SwordSaintStateDic[SwordSaomtData.OriginState]);
-            StateMachine.SetCurrentState(SwordSaintStateDic[SwordSaomtData.OriginState]);
+            StateMachine.SetOriginalState(SwordSaintStateDic[SwordSaintData.OriginState]);
+            StateMachine.SetCurrentState(SwordSaintStateDic[SwordSaintData.OriginState]);
         }
-        public override void InitStateDictionary()
+        protected override void InitStateDictionary()
         {
             StateMachine = new StateMachine<SwordSaintBase>(this);
             SwordSaintStateDic.Add(EnemyStateType.IdleStateEnemy,new IdleStateSwordSaint(this,null,null));
@@ -93,10 +98,28 @@ namespace C_Script.Eneny.Boss.SwordSaint
             SwordSaintStateDic.Add(EnemyStateType.ComboAttackStateEnemy,
                 new ComboStateSwordSaint(this,"Combo","SwordSaint_ready","SwordSaint_combo1","SwordSaint_combo2","SwordSaint_combo3"));
             SwordSaintStateDic.Add(EnemyStateType.ReadyStateEnemy,new ReadyStateSwordSaint(this,null,null));
+            SwordSaintStateDic.Add(EnemyStateType.WinStateEnemy,new WinStateSwordSaint(this,null,null));
         }
-        public override void InitDataSetting()
+
+        protected override void SwitchState()
+        { }
+
+        protected override void InitDataSetting()
+        { }
+
+        private void AfterPlayerDeath()
         {
+            StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.WinStateEnemy]);
         }
+
+        public override void HurtEvent()
+        {
+            if(Random.value>SwordSaintData.DizzinessRate&&!SwordSaintData.SuperArmor)
+                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.HurtStateEnemy]);
+        }
+
+        public override void DeathEvent()=>
+            StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.HurtStateEnemy]);
         private void DemonBossStop()
         {
             if(StateMachine.CurrentState!=SwordSaintStateDic[EnemyStateType.WaitStateEnemy])
@@ -106,10 +129,6 @@ namespace C_Script.Eneny.Boss.SwordSaint
         { 
             if(StateMachine.CurrentState==SwordSaintStateDic[EnemyStateType.WaitStateEnemy])
                 StateMachine.RevertOrinalState();
-        }
-        public override void SwitchState()
-        {
-        
         }
     }
 }

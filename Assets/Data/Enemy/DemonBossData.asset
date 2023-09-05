@@ -24,8 +24,6 @@ MonoBehaviour:
   <HitForceUp>k__BackingField: 0
   <HitForceDown>k__BackingField: 0
   <HitForceForward>k__BackingField: 0
-  <IsDeath>k__BackingField: 0
-  <IsHurt>k__BackingField: 0
   <IsDebug>k__BackingField: 0
   <OriginState>k__BackingField: 0
   <PursuitRange>k__BackingField: 0
@@ -33,8 +31,10 @@ MonoBehaviour:
   <PatrolSpeed>k__BackingField: 0
   <PursuitSpeed>k__BackingField: 0
   <HitEffectOffSetY>k__BackingField: 0
+  <SuperArmor>k__BackingField: 0
   <HitEffect1>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
   <HitEffect2>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <DizzinessRate>k__BackingField: 0.5
   <FirstDeath>k__BackingField: 0
   <IsTwoLives>k__BackingField: 1
   <WarningSign>k__BackingField: {fileID: 0}

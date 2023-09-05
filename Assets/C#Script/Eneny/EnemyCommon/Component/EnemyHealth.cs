@@ -1,5 +1,6 @@
 ﻿using C_Script.BaseClass;
 using C_Script.Eneny.EnemyCommon.Model;
+using C_Script.Eneny.EnemyCommon.View;
 using UnityEngine;
 
 namespace C_Script.Eneny.EnemyCommon.Component
@@ -8,6 +9,8 @@ namespace C_Script.Eneny.EnemyCommon.Component
     {
         //private EnemyData _enemyData;
         private EnemyModel EnemyModel => Model as EnemyModel;
+        
+        private EnemyView EnemyView => View as EnemyView;
         private Rigidbody2D Rb =>  EnemyModel.EnemyRigidbody2D;
         private EnemyData EnemyData => EnemyModel.EnemyData;
         private GameObject HitEffect1 => EnemyData.HitEffect1;
@@ -17,8 +20,6 @@ namespace C_Script.Eneny.EnemyCommon.Component
         protected virtual void Start() => InitHealth();
         protected virtual void InitHealth() { 
             EnemyData.CurrentHealth = EnemyData.MaxHealth;
-            EnemyData.IsDeath = false;
-            EnemyData.IsHurt = false;
         }
         public void EnemyDamageWithoutPower(float amount)
         {
@@ -29,8 +30,6 @@ namespace C_Script.Eneny.EnemyCommon.Component
         }
         public void EnemyDamageWithPower(float amount, Vector2 forceVector2,float stunRate)
         {
-            if(Random.value<stunRate)
-                EnemyData.IsHurt = true;
             CommonDamage(amount);
             Rb.AddForce(new Vector2(forceVector2.x,0).normalized*EnemyData.HitForceForward,ForceMode2D.Impulse);
             if(_effect2) Destroy(_effect2);
@@ -49,8 +48,9 @@ namespace C_Script.Eneny.EnemyCommon.Component
             }
             if (EnemyData.CurrentHealth <= 0)
             {
-                EnemyData.IsDeath = true;
+                EnemyView.EnemyDeath?.Invoke();
             }
+            EnemyView.EnemyHurt?.Invoke();
         }
     }
 }

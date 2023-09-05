@@ -100,7 +100,6 @@ namespace C_Script.Object
                 if (_isPlayerInFire)
                 {
                     _player.GetComponentInChildren<PlayerHealth>().FireDamage(hitAmount);
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield return new WaitForSeconds(damageTimeInterval);
                 }
                 yield return null;

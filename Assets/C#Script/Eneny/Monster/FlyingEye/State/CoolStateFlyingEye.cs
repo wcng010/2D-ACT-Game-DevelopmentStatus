@@ -17,7 +17,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
         public override void LogicExcute()
         {
             base.LogicExcute();
-            SwitchState();
         }
 
 
@@ -25,23 +24,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
         {
             
         }
-
-        private void SwitchState()
-        {
-            if (FlyingEyeData.IsDeath)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsHurt)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-            }
-        }
+        
     }
 }

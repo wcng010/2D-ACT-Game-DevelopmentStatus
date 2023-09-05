@@ -82,8 +82,6 @@ namespace C_Script.Player.BaseClass
 
         private void Update()
         {
-            if (PlayerData.IsDeath&& StateMachine.CurrentState!=PlayerStateDic[PlayerStateType.DeathStatePlayer])
-                StateMachine.ChangeState(PlayerStateDic[PlayerStateType.DeathStatePlayer]);
             SwitchState();
             LogicBehaviour();
         }
@@ -107,17 +105,17 @@ namespace C_Script.Player.BaseClass
         }
         public void PlayerSubScribe()
         {
-            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,PlayerHurtEvent);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,HurtEvent);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerStop,PlayerStopEvent);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerStart,PlayerStartEvent);
-            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,PlayerDeathEvent);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,DeathEvent);
         }
         public void PlayerRemoveScribe()
         {
-            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerHurt,PlayerHurtEvent);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerHurt,HurtEvent);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerStop,PlayerStopEvent);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerStart,PlayerStartEvent);
-            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,PlayerDeathEvent);
+            CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,DeathEvent);
         }
         private void PlayerStopEvent()
         {
@@ -133,16 +131,16 @@ namespace C_Script.Player.BaseClass
         {
             StateMachine.RevertOrinalState();
         }
-        private void PlayerHurtEvent()
+        public override void HurtEvent()
         {
-            //PlayerModel.PlayerRigidbody2D.velocity = Vector2.zero;
             StateMachine.ChangeState(PlayerStateDic[PlayerStateType.HurtStatePlayer]);
         }
-        private void PlayerDeathEvent()
+
+        public override void DeathEvent()
         {
             StateMachine.ChangeState(PlayerStateDic[PlayerStateType.DeathStatePlayer]);
         }
-        public override void InitOriginState()
+        protected override void InitOriginState()
         {
             StateMachine.SetPreviousState(null);
             StateMachine.SetGlobalState(PlayerStateDic[PlayerStateType.LinkTimeStatePlayer]);
@@ -150,14 +148,14 @@ namespace C_Script.Player.BaseClass
             StateMachine.SetOriginalState(PlayerStateDic[PlayerStateType.OnGroundStatePlayer]);
             StateMachine.ChangeState(PlayerStateDic[PlayerStateType.OnGroundStatePlayer]);
         }
-        public override void InitDataSetting()
+        protected override void InitDataSetting()
         {
             PlayerData.WalkAshEffectTrriger = false;
             PlayerData.CurrentHealth = PlayerData.MaxHealth;
-            PlayerData.IsDeath = false;
             PlayerData.IsLinkTime = false;
         }
-        public sealed override void InitStateDictionary()
+        
+        protected sealed override void InitStateDictionary()
         {
             StateMachine = new StateMachine<PlayerBase>(this);
             PlayerStateDic.Add(PlayerStateType.HighSpeedStatePlayer,new HighSpeedStatePlayer(this,"Move","player_Move"));
@@ -202,7 +200,7 @@ namespace C_Script.Player.BaseClass
         /// <summary>
         /// Use StateMachine To SwitchState
         /// </summary>
-        public override void SwitchState()
+        protected override void SwitchState()
         {
             XAxis = Input.GetAxis("Horizontal");
             YAxis = Input.GetAxis("Vertical");

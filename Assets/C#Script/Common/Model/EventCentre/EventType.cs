@@ -8,7 +8,6 @@
         PlayerStart,
         EnemyStart,
         EnemyStop,
-        CameraShake,
         EnterBossRoom
     }
 

@@ -5,6 +5,7 @@ using C_Script.Common.Model.EventCentre;
 using C_Script.Eneny.Boss.DemonBoss.Data;
 using C_Script.Eneny.Boss.DemonBoss.Model;
 using C_Script.Eneny.Boss.DemonBoss.State;
+using C_Script.Eneny.Boss.DemonBoss.View;
 using C_Script.Eneny.EnemyCreator;
 using C_Script.Eneny.Monster.Magician.Core;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
@@ -16,9 +17,13 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
 {
     public class DemonBossBase : PhysicObject<DemonBossBase>
     {
-        public DemonBossModel DemonBossModel => _model? _model : _model = GetComponentInParent<DemonBossModel>();
+        private DemonBossModel DemonBossModel => _model? _model : _model = GetComponentInParent<DemonBossModel>();
         
         private DemonBossModel _model;
+
+        private DemonBossView DemonBossView => _view ? _view : _view = DemonBossModel.View as DemonBossView;
+        
+        private DemonBossView _view;
 
         private bool _isPlayerDeath;
         public BossFactory Factory => _factory? _factory: _factory = transform.GetComponentInParent<BossFactory>();
@@ -38,6 +43,8 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStop,DemonBossStop);
+            DemonBossView.EnemyHurt.AddListener(HurtEvent);
+            DemonBossView.EnemyDeath.AddListener(DeathEvent);
         }
 
         private void Start()
@@ -59,6 +66,8 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStop,DemonBossStop);
+            DemonBossView.EnemyHurt.RemoveListener(HurtEvent);
+            DemonBossView.EnemyDeath.RemoveListener(DeathEvent);
         }
         
         private void FindComponent()
@@ -76,23 +85,34 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
             InitStateDictionary();
             InitOriginState();
         }
-        public override void InitOriginState()
+        protected override void InitOriginState()
         {
             StateMachine.SetPreviousState(null);
             StateMachine.SetGlobalState(null);
             StateMachine.SetOriginalState(DemonBossDic[EnemyStateType.IdleStateEnemy]);
             StateMachine.SetCurrentState(DemonBossDic[EnemyStateType.WaitStateEnemy]);
         }
-        public override void InitStateDictionary()
+        protected override void InitStateDictionary()
         {
             StateMachine = new StateMachine<DemonBossBase>(this);
             DemonBossDic.Add(EnemyStateType.IdleStateEnemy,new IdleStateDemonBoss(this,null,null));
             DemonBossDic.Add(EnemyStateType.MeleeAttackStateEnemy,new AttackStateDemonBoss(this,"Breath","demon_breath"));
             DemonBossDic.Add(EnemyStateType.WaitStateEnemy,new WaitStateDemonBoss(this,null,null));
         }
-        public override void InitDataSetting()
+        protected override void InitDataSetting()
         {
         }
+
+        public override void HurtEvent()
+        {
+            
+        }
+
+        public override void DeathEvent()
+        {
+           
+        }
+
         private void DemonBossStop()
         {
             if(StateMachine.CurrentState!=DemonBossDic[EnemyStateType.WaitStateEnemy])
@@ -103,7 +123,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
             if(StateMachine.CurrentState==DemonBossDic[EnemyStateType.WaitStateEnemy])
                 StateMachine.RevertOrinalState();
         }
-        public override void SwitchState()
+        protected override void SwitchState()
         {
         
         }

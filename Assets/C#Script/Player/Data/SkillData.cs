@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using C_Script.Common.Model.ObjectPool;
 using UnityEngine;
@@ -10,5 +11,10 @@ namespace C_Script.Player.Data
     public class SkillData : ScriptableObject
     {
         public SerializedDictionary<string,bool> skillBools = new SerializedDictionary<string, bool>();
+
+        private void Awake()
+        {
+            
+        }
     }
 }

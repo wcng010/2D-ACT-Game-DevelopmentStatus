@@ -32,21 +32,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
 
         private void SwitchState()
         {
-            if (FlyingEyeData.IsDeath)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsHurt)
-            {
-                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);
-                return;
-            }
-            if (FlyingEyeData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-                return;
-            }
             _toTargetVector2 = TargetTrans.position - TransformOwner.position ;
         }
         

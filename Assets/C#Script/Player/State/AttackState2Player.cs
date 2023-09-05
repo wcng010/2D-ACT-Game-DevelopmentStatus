@@ -29,6 +29,7 @@ namespace C_Script.Player.StateModel
             AnimatorOwner.SetBool(Attack1,false);
             AnimatorOwner.SetBool(Attack2,false);
             AnimatorOwner.SetInteger(Count,0);
+            PressJKeyCount = 0;
             Time.timeScale = 1;
         }
         protected virtual void AdjustPosition(Transform playertrans)

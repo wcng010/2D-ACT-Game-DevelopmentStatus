@@ -30,7 +30,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
 
         public override void Enter()
         {
-            
+            SwordSaintData.SuperArmor = true;
             AnimatorOwner.SetBool(NameToTrigger,true);
             if(SwordSaintData.SkillButton1)
             {
@@ -64,7 +64,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
             BossFactory.warningSign.SetActive(false);
             SwordScar.SetActive(false);
             _comboFinished4 = false;
-            SwordSaintData.IsHurt = false;
+            SwordSaintData.SuperArmor = false;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -80,8 +80,7 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
 
         private void SwitchState()
         {
-            if (SwordSaintData.IsDeath)
-                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.DeathStateEnemy]);
+
         }
 
         private void ReadyAnimationStart()

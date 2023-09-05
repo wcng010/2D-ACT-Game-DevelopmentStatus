@@ -57,19 +57,7 @@ namespace C_Script.Eneny.Monster.Magician.State
         {
             Vector2 toTargetVector2 = TargetTrans.position-TransformOwner.position;
             float toTargetDis = MathF.Abs(toTargetVector2.magnitude);
-            if (MagicianData.IsDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
-            }
-            else if (MagicianData.IsHurt)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
-            }
-            else if (MagicianData.IsTargetDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[MagicianData.OriginState]);
-            }
-            else if (toTargetDis < MagicianData.PursuitRange)
+            if (toTargetDis < MagicianData.PursuitRange)
             {
                 StateMachine.ChangeState(MagicianDic[EnemyStateType.PursuitStateEnemy]);
             }

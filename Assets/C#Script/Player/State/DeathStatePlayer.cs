@@ -28,7 +28,6 @@ namespace C_Script.Player.State
         }
         IEnumerator DeathIEnu()
         {
-            PlayerData.IsDeath = true;
             yield return new WaitForSeconds(1f);
             ScenesEventCentreManager.Instance.Publish(ScenesEventType.ReStart);
         }

@@ -24,28 +24,10 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         {
             if (IsAniamtionFinshed)
                 StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.ReadyStateEnemy]);
-            SwitchState();
         }
         public override void Exit()
         {
             base.Exit();
-        }
-        private void SwitchState()
-        {
-            if(SwordSaintData.IsDeath)
-            {
-                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (SwordSaintData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-                return;
-            }
-            if (SwordSaintData.IsHurt)
-            {
-                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.HurtStateEnemy]);
-            }
         }
     }
 }

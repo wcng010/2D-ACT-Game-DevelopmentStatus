@@ -1,4 +1,5 @@
 ﻿using C_Script.BaseClass;
+using C_Script.Common.Model.EventCentre;
 using C_Script.Player.Core;
 using C_Script.Player.Data;
 using C_Script.Player.MVC.Model;
@@ -14,23 +15,9 @@ namespace C_Script.Player.Component
         private Transform PlayerTrans => PlayerModel.PlayerTrans;
         
         private GameObject _hitEffect;
-        protected override void Awake()
-        {
-            base.Awake();
-        }
         
-        private void Start()
-        {
-            InitHealth();
-        }
-
-        public void InitHealth()
-        {
-
-        }
-
         public void PlayerDamage(float amount,Vector2 forceVector2,ForceDirection forceDir)=>Damage(PlayerData,amount,forceVector2,forceDir);
-
+        
         private void Damage(AttackObjectDataSo attackObjectDataSo, float amount,
             Vector2 forceVector2,ForceDirection forceDir)
         {
@@ -44,17 +31,20 @@ namespace C_Script.Player.Component
             }
             if (attackObjectDataSo.CurrentHealth <= 0)
             {
-                attackObjectDataSo.IsDeath = true;
+                CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
             }
             switch (forceDir)
             {
                 case ForceDirection.None : 
                     break;
                 case ForceDirection.Up : Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceUp, ForceMode2D.Impulse);
+                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
                 case ForceDirection.Down : Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceDown, ForceMode2D.Impulse);
+                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
                 case ForceDirection.Forward: Rb.AddForce(forceVector2.normalized * attackObjectDataSo.HitForceForward, ForceMode2D.Impulse);
+                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     break;
                 default: Debug.unityLogger.LogError("LogicError","No ForceDir Setting");
                     break;
@@ -69,15 +59,16 @@ namespace C_Script.Player.Component
         {
             if ((PlayerData.CurrentHealth -= amount) < 0)
             {
-                PlayerData.IsDeath = true;
+                CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
             }
             Rb.AddForce(new Vector2(-PlayerTrans.localScale.x,1).normalized*PlayerData.HitForceUp,ForceMode2D.Impulse);
+            CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
         }
 
         public void FatalBlow()
         {
             PlayerData.CurrentHealth = 0;
-            PlayerData.IsDeath = true;
+            CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerDeath);
         }
     }
 }

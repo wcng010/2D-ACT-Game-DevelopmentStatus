@@ -2,15 +2,12 @@ using System.Collections.Generic;
 using C_Script.BaseClass;
 using C_Script.Common.Model.BehaviourModel;
 using C_Script.Common.Model.EventCentre;
-using C_Script.Eneny.Monster.Magician.Core;
 using C_Script.Eneny.Monster.Magician.Data;
 using C_Script.Eneny.Monster.Magician.Model;
 using C_Script.Eneny.Monster.Magician.State;
-using C_Script.Eneny.Monster.Magician.State.StateBase;
+using C_Script.Eneny.Monster.Magician.View;
 using C_Script.Model.BehaviourModel;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 namespace C_Script.Eneny.Monster.Magician.BaseClass
@@ -23,6 +20,9 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         private MagicianModel _model;
         private MagicianData MagicianData => MagicianModel.EnemyData as MagicianData;
 
+        public MagicianView MagicianView => _view ? _view : _view = Model.View as MagicianView;
+        private MagicianView _view;
+
         public readonly Dictionary<EnemyStateType, State<MagicianBase>> MagicianDic = new();
         private void Awake()
         {
@@ -32,6 +32,9 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         private void OnEnable()
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
+            
+            MagicianView.EnemyHurt.AddListener(HurtEvent);
+            MagicianView.EnemyDeath.AddListener(DeathEvent);
         }
         private void Start() {}
         private void FixedUpdate()
@@ -45,6 +48,8 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         private void OnDisable()
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
+            MagicianView.EnemyHurt.RemoveListener(HurtEvent);
+            MagicianView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
         {
@@ -62,14 +67,14 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
             InitStateDictionary();
             InitOriginState();
         }
-        public override void InitOriginState()
+        protected override void InitOriginState()
         {
             StateMachine.SetPreviousState(null);
             StateMachine.SetGlobalState(null);
             StateMachine.SetCurrentState(MagicianDic[MagicianData.OriginState]);
             StateMachine.SetOriginalState(MagicianDic[MagicianData.OriginState]);
         }
-        public sealed override void InitStateDictionary()
+        protected sealed override void InitStateDictionary()
         {
             StateMachine = new StateMachine<MagicianBase>(this);
             MagicianDic.Add(EnemyStateType.IdleStateEnemy,new IdleStateMagician(this,null,null));
@@ -80,10 +85,25 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
             MagicianDic.Add(EnemyStateType.CoolDownStateEnemy,new CoolStateMagician(this,"Cool","Magician_CoolDown"));
             MagicianDic.Add(EnemyStateType.HurtStateEnemy,new HurtStateMagician(this,"Hurt","Magician_Hurt"));
             MagicianDic.Add(EnemyStateType.DeathStateEnemy,new DeathStateMagician(this,"Death","Magician_Death"));
+            MagicianDic.Add(EnemyStateType.WinStateEnemy,new WinStateMagician(this,null,null));
         }
-        public override void InitDataSetting()
+        protected override void InitDataSetting()
         {
         }
+
+        public override void HurtEvent()
+        {
+            if(Random.value>MagicianData.DizzinessRate)
+                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
+        }
+
+
+        
+
+        public override void DeathEvent() =>
+            StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
+        
+
         private void SetOriginPointX()
         {
             MagicianData.OriginPointX = transform.position.x;
@@ -92,10 +112,10 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         #region Event
         private void AffterPlayerDeath()
         {
-            MagicianData.IsTargetDeath = true;
+            StateMachine.ChangeState(MagicianDic[EnemyStateType.WinStateEnemy]);
         }
         #endregion
-        public override void SwitchState()
+        protected override void SwitchState()
         {
         }
     }

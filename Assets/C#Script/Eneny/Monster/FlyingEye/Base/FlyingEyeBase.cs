@@ -5,7 +5,10 @@ using C_Script.Common.Model.EventCentre;
 using C_Script.Eneny.Monster.FlyingEye.Data;
 using C_Script.Eneny.Monster.FlyingEye.Model;
 using C_Script.Eneny.Monster.FlyingEye.State;
+using C_Script.Eneny.Monster.FlyingEye.View;
 using C_Script.Model.BehaviourModel;
+using Unity.Mathematics;
+using Random = UnityEngine.Random;
 
 namespace C_Script.Eneny.Monster.FlyingEye.Base
 {
@@ -15,6 +18,10 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         public FlyingEyeModel FlyingEyeModel => _model? _model : _model = GetComponentInParent<FlyingEyeModel>();
         
         private FlyingEyeModel _model;
+
+        public FlyingEyeView FlyingEyeView => _view ? _view : _view = FlyingEyeModel.View as FlyingEyeView;
+
+        private FlyingEyeView _view;
         private FlyingEyeData Data => FlyingEyeModel.EnemyData as FlyingEyeData;
         private void Awake()
         {
@@ -24,6 +31,8 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         private void OnEnable()
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
+            FlyingEyeView.EnemyHurt.AddListener(HurtEvent);
+            FlyingEyeView.EnemyDeath.AddListener(DeathEvent);
         }
         private void Start() {}
         private void FixedUpdate()
@@ -37,6 +46,8 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         private void OnDisable()
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
+            FlyingEyeView.EnemyHurt.RemoveListener(HurtEvent);
+            FlyingEyeView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
         {
@@ -54,14 +65,14 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
             InitStateDictionary();
             InitOriginState();
         }
-        public override void InitOriginState()
+        protected override void InitOriginState()
         {
             StateMachine.SetPreviousState(null);
             StateMachine.SetGlobalState(null);
             StateMachine.SetCurrentState(FlyingEyeDic[EnemyStateType.SleepStateEnemy]);
             StateMachine.SetOriginalState(FlyingEyeDic[FlyingEyeModel.EnemyData.OriginState]);
         }
-        public sealed override void InitStateDictionary()
+        protected sealed override void InitStateDictionary()
         {
             StateMachine = new StateMachine<FlyingEyeBase>(this);
             FlyingEyeDic.Add(EnemyStateType.SleepStateEnemy,new SleepStateFlyingEye(this,null,null));
@@ -73,21 +84,33 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
             FlyingEyeDic.Add(EnemyStateType.DeathStateEnemy, new DeathStateFlyingEye(this, "Death", "FlyingEye_death"));
             FlyingEyeDic.Add(EnemyStateType.HurtStateEnemy, new HurtStateFlyingEye(this, "Hit", "FlyingEye_hit"));
             FlyingEyeDic.Add(EnemyStateType.CoolDownStateEnemy,new CoolStateFlyingEye(this,"Cool","FlyingEye_coolDown"));
+            FlyingEyeDic.Add(EnemyStateType.WinStateEnemy, new WinStateFlyingEye(this,null,null));
         }
-        public override void InitDataSetting()
+        protected override void InitDataSetting()
         {
         }
+
+        public override void HurtEvent()
+        {
+            if(Random.value>Data.DizzinessRate)
+                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);
+        }
+
+        public override void DeathEvent()
+        {
+            StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.DeathStateEnemy]);
+        }
+
         private void SetOriginPointX()
         {
             Data.OriginPointX = transform.position.x;
         }
         #region Event
-        private void AffterPlayerDeath()
-        {
-            Data.IsTargetDeath = true;
-        }
+
+        private void AffterPlayerDeath() =>
+            StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.WinStateEnemy]);
         #endregion
-        public override void SwitchState()
+        protected override void SwitchState()
         {   
             
         }

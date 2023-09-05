@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 379771081}
   - component: {fileID: 379771084}
   - component: {fileID: 379771083}
-  - component: {fileID: 379771082}
+  - component: {fileID: 379771085}
   m_Layer: 0
   m_Name: Dash
   m_TagString: Untagged
@@ -1621,21 +1621,6 @@ RectTransform:
   m_AnchoredPosition: {x: -11.1, y: -2}
   m_SizeDelta: {x: 45, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &379771082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 379771080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4aa9c1d3b74a546bae8caf36731917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDown: 1
-  skillName: Dash
-  keyCode: 0
 --- !u!114 &379771083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1674,6 +1659,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379771080}
   m_CullTransparentMesh: 1
+--- !u!114 &379771085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379771080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af12f303cf474b4d9195294a368bd55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCode: 113
+  coolDown: 1
+  skillName: Dash
 --- !u!1 &402158031
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,7 +3537,7 @@ GameObject:
   - component: {fileID: 748144503}
   - component: {fileID: 748144502}
   - component: {fileID: 748144501}
-  - component: {fileID: 748144500}
+  - component: {fileID: 748144505}
   m_Layer: 0
   m_Name: WaterWave
   m_TagString: Untagged
@@ -3565,21 +3565,6 @@ RectTransform:
   m_AnchoredPosition: {x: -72.5, y: -4.1}
   m_SizeDelta: {x: 92.16, y: 51.84}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &748144500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748144498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4aa9c1d3b74a546bae8caf36731917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDown: 5
-  skillName: WaterWave
-  keyCode: 49
 --- !u!114 &748144501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3648,6 +3633,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748144498}
   m_CullTransparentMesh: 1
+--- !u!114 &748144505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748144498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4968c7fa5067c46a17f3745ba8600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCode: 49
+  coolDown: 3
+  skillName: WaterWave
 --- !u!1 &751276446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5504,7 +5504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368661430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 

@@ -26,7 +26,6 @@ namespace C_Script.Eneny.Monster.Magician.State
         
         private void AfterDeath()
         {
-            MagicianData.IsDeath = true;
             Owner.gameObject.layer = LayerMask.NameToLayer("Dead");
             Owner.gameObject.tag = "Untagged";
         }

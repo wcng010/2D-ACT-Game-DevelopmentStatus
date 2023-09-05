@@ -71,21 +71,18 @@ namespace C_Script.Object
                 {
                     col.transform.GetComponentInChildren<PlayerHealth>()
                         .PlayerDamage(damageAmount, Vector2.up, ForceDirection.Up);
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     _isHit1 = true;
                 }
                 else if (!_isHit2 && _animator.GetCurrentAnimatorStateInfo(0).IsName("SwordScar2"))
                 {
                     col.transform.GetComponentInChildren<PlayerHealth>()
                         .PlayerDamage(damageAmount, Vector2.up, ForceDirection.Up);
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     _isHit2 = true;
                 }
                 else if(!_isHit3 && _animator.GetCurrentAnimatorStateInfo(0).IsName("SwordScar3"))
                 {
                     col.transform.GetComponentInChildren<PlayerHealth>()
                         .PlayerDamage(damageAmount, Vector2.up, ForceDirection.Up);
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     _isHit3 = true;
                 }
             }

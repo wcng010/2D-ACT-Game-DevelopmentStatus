@@ -26,7 +26,6 @@ namespace C_Script.Eneny.Monster.Magician.State
         public override void Exit()
         {
             base.Exit();
-            MagicianData.IsHurt = false;
         }
 
         public HurtStateMagician(MagicianBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)

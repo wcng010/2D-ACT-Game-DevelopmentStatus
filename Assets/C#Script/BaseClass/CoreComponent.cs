@@ -9,10 +9,13 @@ namespace C_Script.BaseClass
         protected Core Core;
 
         protected Model Model;
+
+        protected View View;
         protected virtual void Awake()
         {
             Model = transform.GetComponentInParent<Model>();
-            Core = transform.parent.GetComponent<Core>();
+            Core = transform.GetComponentInParent<Core>();
+            View = transform.GetComponentInParent<View>();
             if(!Core) { Debug.LogError("There is no Core on the parent"); }
             Core.AddComponent(this);
         }

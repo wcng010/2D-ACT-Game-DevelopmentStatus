@@ -22,7 +22,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         
         private void AfterDeath()
         {
-            SwordSaintData.IsDeath = true;
             Owner.gameObject.layer = LayerMask.NameToLayer("Dead");
             Owner.gameObject.tag = "Untagged";
         }

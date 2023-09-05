@@ -75,7 +75,6 @@ namespace C_Script.Player.StateModel.BaseState
                         //Knock out conditions
                         yield return new WaitUntil(() =>
                             AnimatorOwner.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5);
-                        CombatEventCentreManager.Instance.Publish(CombatEventType.CameraShake);
                         //Invoke Hurt Enemys Function
                         foreach (var hit in hits)
                         {

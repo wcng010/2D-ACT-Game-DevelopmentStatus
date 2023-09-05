@@ -38,8 +38,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
                     (CalculateAttack(SwordSaintData.AttackPower,SwordSaintData.CriticalRate,SwordSaintData.CriticalDamage),
                         forceDir,forceDirection);
-                    //Player enter hurtState
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield break;
                 }
                 yield return new WaitForSeconds(0.05f);
@@ -59,8 +57,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
                     (CalculateAttack(SwordSaintData.AttackPower,SwordSaintData.CriticalRate,SwordSaintData.CriticalDamage),
                         ForceDir,forceDirection);
-                    //Player enter hurtState
-                    CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                     yield break;
                 }
                 yield return new WaitForSeconds(0.05f);

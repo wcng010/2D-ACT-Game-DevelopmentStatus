@@ -63,21 +63,8 @@ namespace C_Script.Eneny.Monster.Magician.State
             _toTargetVector2 = TargetTrans.position-TransformOwner.position;
             float toTargetDis = MathF.Abs(_toTargetVector2.magnitude);
             TransformOwner.localScale = new Vector3(_toTargetVector2.x/Mathf.Abs(_toTargetVector2.x), 1, 1);
-            if (MagicianData.IsDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
-            }
-            else if (MagicianData.IsHurt)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
-            }
-
-            else if (MagicianData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-            }
             //距离大于远程攻击范围
-            else if (toTargetDis > MagicianData.RemoteAttackRange)
+            if (toTargetDis > MagicianData.RemoteAttackRange)
             {
                 StateMachine.ChangeState(MagicianDic[EnemyStateType.PursuitStateEnemy]);
             }

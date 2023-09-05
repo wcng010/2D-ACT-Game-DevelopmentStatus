@@ -9,11 +9,8 @@ namespace C_Script.Camera
         private void OnEnable()
         {
             _source = GetComponent<CinemachineImpulseSource>();
-            CombatEventCentreManager.Instance.Subscribe(CombatEventType.CameraShake,CameraShakeEvent);
+            CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerHurt,CameraShakeEvent);
         }
-        private void CameraShakeEvent()
-        {
-            _source.GenerateImpulse();
-        }
+        private void CameraShakeEvent()=> _source.GenerateImpulse();
     }
 }

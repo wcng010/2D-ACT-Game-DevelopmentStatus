@@ -21,20 +21,7 @@ namespace C_Script.Eneny.Monster.Magician.State
         }
         private void SwitchState()
         {
-            if (MagicianData.IsDeath)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (MagicianData.IsHurt)
-            {
-                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
-                return;
-            }
-            if (MagicianData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-            }
+
         }
         public CoolStateMagician(MagicianBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {

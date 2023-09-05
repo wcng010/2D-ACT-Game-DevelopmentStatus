@@ -83,7 +83,6 @@ namespace C_Script.UI.ScenesBloodBars
 
         private void BossSecondDeath()
         {
-            _bossDataSo.IsDeath = true;
             _bossEnter2 = true;
             _bossFactory.DefeatBoss();
             if(SceneManager.GetActiveScene().buildIndex+1 > SceneManager.sceneCountInBuildSettings) 

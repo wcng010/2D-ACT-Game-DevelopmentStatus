@@ -29,21 +29,6 @@ namespace C_Script.Eneny.Boss.SwordSaint.State
         }
         private void SwitchState()
         {
-            if(SwordSaintData.IsDeath)
-            {
-                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.DeathStateEnemy]);
-                return;
-            }
-            if (SwordSaintData.IsTargetDeath)
-            {
-                StateMachine.RevertOrinalState();
-                return;
-            }
-            if (SwordSaintData.IsHurt)
-            {
-                StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.HurtStateEnemy]);
-                return;
-            }
             toTargetVector2 = SwordSaintModel.TargetTrans.position - TransformOwner.position;
             distance = toTargetVector2.magnitude;
             TransformOwner.localScale = new Vector3(toTargetVector2.x/Mathf.Abs(toTargetVector2.x), 1, 1);

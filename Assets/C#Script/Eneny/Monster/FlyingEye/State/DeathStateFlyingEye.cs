@@ -22,7 +22,6 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
             Rigidbody2DOwner.gravityScale = 1.5f;
             Collider2DOwner.isTrigger = false;
             Collider2DOwner.size = new Vector2(0.17f, 0.17f);
-            FlyingEyeData.IsDeath = true;
             Owner.gameObject.layer = LayerMask.NameToLayer("Dead");
             Owner.gameObject.tag = "Untagged";
         }
