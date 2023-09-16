@@ -6,25 +6,27 @@ TagManager:
   tags:
   - Ground
   - Launcher
-  - BloodBar
   - ObjectPool
   - MoveAsh
   - VCM
-  - Foot
   - Enemy
+  - DashAsh
+  - JumpAsh
+  - TurnAsh
+  - Singleton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Dead
+  - BackGround
   - Water
   - UI
   - Ground
   - Player
   - Enemy
-  - Single
-  - 
-  - 
+  - Dead
+  - IgnoreGround
+  - FlightProps
   - 
   - 
   - 

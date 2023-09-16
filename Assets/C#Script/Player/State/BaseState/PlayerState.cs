@@ -1,24 +1,43 @@
-﻿using System.Buffers;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using C_Script.Common.Model.BehaviourModel;
-using C_Script.Common.Model.EventCentre;
 using C_Script.Eneny.EnemyCommon.Component;
-using C_Script.Eneny.Monster.Magician.Component;
-using C_Script.Model.BehaviourModel;
-using C_Script.Player.BaseClass;
+using C_Script.Manager;
+using C_Script.Player.Base;
 using C_Script.Player.Data;
 using C_Script.Player.MVC.Model;
 using UnityEngine;
 
-
-namespace C_Script.Player.StateModel.BaseState
+namespace C_Script.Player.State.BaseState
 {
     /// <summary>
     /// In order to compound PlayerState function and data
     /// </summary>
     public abstract class PlayerState:State<PlayerBase>
     {
+        #region Input
+
+        protected int XAxis => InputManager.Instance.InputX;
+
+        protected int YAxis => InputManager.Instance.InputY;
+
+        protected bool JKey
+        {
+            get => InputManager.Instance.InputJ;
+            set => InputManager.Instance.InputJ = value;
+        }
+
+        protected bool KKey => InputManager.Instance.InputK;
+
+        protected bool QKey => InputManager.Instance.InputQ;
+
+        protected bool SpaceKey => InputManager.Instance.InputSpace;
+
+        #endregion
+
+        private bool _isCritical;
+        
+        
         // ReSharper disable Unity.PerformanceAnalysis
         [Range(0, 1)] protected static uint PressJKeyCount = 0;
         protected PlayerData PlayerData => DataSo as PlayerData;
@@ -30,17 +49,17 @@ namespace C_Script.Player.StateModel.BaseState
         // ReSharper disable Unity.PerformanceAnalysis
         protected virtual void MoveBehaviour(float maxSpeedX,float accelerationX)
         {
-            //Rigidbody2DOwner.velocity = new Vector2(Owner.XAxis*speed ,0);
-            if (Owner.XAxis<0)
+            //Rigidbody2DOwner.velocity = new Vector2(XAxis*speed ,0);
+            if (XAxis<0)
             {
                 TransformOwner.localScale = new Vector3(-1, 1, 1);
             }
-            else if(Owner.XAxis>0)
+            else if(XAxis>0)
             {
                 TransformOwner.localScale = new Vector3(1 ,1, 1);
             }
-            float inputX = Owner.XAxis;
-                if (Owner.XAxis != 0) {
+            float inputX = XAxis;
+                if (XAxis != 0) {
                     float velocityX = Mathf.Clamp(Rigidbody2DOwner.velocity.x + inputX * accelerationX * Time.fixedDeltaTime,-maxSpeedX,maxSpeedX);
                     Rigidbody2DOwner.velocity = new Vector2(velocityX,Rigidbody2DOwner.velocity.y);
                     //TransformOwner.position += new Vector3(velocityX*Time.fixedDeltaTime, 0, 0);
@@ -80,8 +99,8 @@ namespace C_Script.Player.StateModel.BaseState
                         {
                             //Invoke EnemyDamage to add Force And reduce health
                             hit.transform.GetComponentInChildren<EnemyHealth>().EnemyDamageWithPower(
-                                CalculateAttack(PlayerData.AttackPower, PlayerData.CriticalRate,
-                                    PlayerData.CriticalDamage), new Vector2(TransformOwner.localScale.x, 0),PlayerData.StunRate);
+                                CalculateAttackWithCrit(PlayerData.AttackPower, PlayerData.CriticalRate,
+                                    PlayerData.CriticalDamage, out _isCritical),new Vector2(TransformOwner.localScale.x, 0),_isCritical);
                         }
                         //Wait AnimationFinshed And Change to Other State
                         yield return new WaitUntil(() => IsAniamtionFinshed);
@@ -112,8 +131,7 @@ namespace C_Script.Player.StateModel.BaseState
                         foreach (var hit in hits)
                         {
                             hit.transform.GetComponentInChildren<EnemyHealth>().EnemyDamageWithoutPower(
-                                CalculateAttack(PlayerData.AttackPower, PlayerData.CriticalRate,
-                                    PlayerData.CriticalDamage));
+                                CalculateAttackWithoutCrit(PlayerData.AttackPower));
                         }
                         yield return new WaitUntil(() => IsAniamtionFinshed);
                         yield break;
@@ -123,7 +141,13 @@ namespace C_Script.Player.StateModel.BaseState
                 }
             }
         }
+        protected float CalculateAttackWithCrit(float attackPower, float criticalRate, float criticalDamage, out bool isCritical)
+        {
+            
+            return (isCritical = (criticalRate >= Random.value)) ? attackPower *= criticalDamage : attackPower;
+        }
 
+        
         private static RaycastHit2D[] RaysTestAll(Vector2 originVec2D, Vector2 dirVec2D, float length, LayerMask layerMask)
         {
             return Physics2D.RaycastAll(originVec2D, dirVec2D, length, layerMask);

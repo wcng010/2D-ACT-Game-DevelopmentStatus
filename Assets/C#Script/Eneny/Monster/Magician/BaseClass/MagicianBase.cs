@@ -33,7 +33,7 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
             
-            MagicianView.EnemyHurt.AddListener(HurtEvent);
+            MagicianView.EnemyHurtCrit.AddListener(HurtEvent);
             MagicianView.EnemyDeath.AddListener(DeathEvent);
         }
         private void Start() {}
@@ -48,7 +48,7 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
         private void OnDisable()
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
-            MagicianView.EnemyHurt.RemoveListener(HurtEvent);
+            MagicianView.EnemyHurtCrit.RemoveListener(HurtEvent);
             MagicianView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
@@ -93,16 +93,16 @@ namespace C_Script.Eneny.Monster.Magician.BaseClass
 
         public override void HurtEvent()
         {
-            if(Random.value>MagicianData.DizzinessRate)
+            /*if(Random.value>MagicianData.DizzinessRate&&StateMachine.CurrentState!=MagicianDic[EnemyStateType.DeathStateEnemy])
+                StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);*/
+            if(StateMachine.CurrentState!=MagicianDic[EnemyStateType.DeathStateEnemy]) 
                 StateMachine.ChangeState(MagicianDic[EnemyStateType.HurtStateEnemy]);
         }
-
-
-        
-
-        public override void DeathEvent() =>
+        public override void DeathEvent()
+        {
             StateMachine.ChangeState(MagicianDic[EnemyStateType.DeathStateEnemy]);
-        
+        }
+
 
         private void SetOriginPointX()
         {

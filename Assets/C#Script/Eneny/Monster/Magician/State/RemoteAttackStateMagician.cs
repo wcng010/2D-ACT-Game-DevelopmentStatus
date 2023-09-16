@@ -4,7 +4,6 @@ using C_Script.BaseClass;
 using C_Script.Eneny.Monster.Magician.BaseClass;
 using C_Script.Eneny.Monster.Magician.Component;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 
 namespace C_Script.Eneny.Monster.Magician.State

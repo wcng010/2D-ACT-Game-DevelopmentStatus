@@ -8,7 +8,8 @@
         PlayerStart,
         EnemyStart,
         EnemyStop,
-        EnterBossRoom
+        EnterBossRoom,
+        CriticalStrike
     }
 
     public enum ScenesEventType

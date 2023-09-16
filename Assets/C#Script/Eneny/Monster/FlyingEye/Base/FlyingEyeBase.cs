@@ -31,7 +31,7 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         private void OnEnable()
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
-            FlyingEyeView.EnemyHurt.AddListener(HurtEvent);
+            FlyingEyeView.EnemyHurtCrit.AddListener(HurtEvent);
             FlyingEyeView.EnemyDeath.AddListener(DeathEvent);
         }
         private void Start() {}
@@ -46,7 +46,7 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
         private void OnDisable()
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AffterPlayerDeath);
-            FlyingEyeView.EnemyHurt.RemoveListener(HurtEvent);
+            FlyingEyeView.EnemyHurtCrit.RemoveListener(HurtEvent);
             FlyingEyeView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
@@ -92,7 +92,9 @@ namespace C_Script.Eneny.Monster.FlyingEye.Base
 
         public override void HurtEvent()
         {
-            if(Random.value>Data.DizzinessRate)
+            /*if(Random.value>Data.DizzinessRate&&StateMachine.CurrentState!=FlyingEyeDic[EnemyStateType.DeathStateEnemy])
+                StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);*/
+            if(StateMachine.CurrentState!=FlyingEyeDic[EnemyStateType.DeathStateEnemy])
                 StateMachine.ChangeState(FlyingEyeDic[EnemyStateType.HurtStateEnemy]);
         }
 

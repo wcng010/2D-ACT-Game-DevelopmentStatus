@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee1e3613847455e98b1d4ac11f2ef59, type: 3}
   m_Name: DemonBossData
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 200
-  <CurrentHealth>k__BackingField: 200
+  <MaxHealth>k__BackingField: 120
+  <CurrentHealth>k__BackingField: 120
   <AttackPower>k__BackingField: 20
   <Defense>k__BackingField: 0
   <CriticalRate>k__BackingField: 0.5
@@ -30,10 +30,13 @@ MonoBehaviour:
   <PatrolRange>k__BackingField: 0
   <PatrolSpeed>k__BackingField: 0
   <PursuitSpeed>k__BackingField: 0
-  <HitEffectOffSetY>k__BackingField: 0
+  <HitEffectOffSet1>k__BackingField: {x: 0, y: 0}
+  <HitEffectOffSet2>k__BackingField: {x: 0, y: 0}
   <SuperArmor>k__BackingField: 0
-  <HitEffect1>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
-  <HitEffect2>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <AttackInvalid>k__BackingField: 0
+  <HitEffect1>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <HitEffect2>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
+  <HitEffect3>k__BackingField: {fileID: 372244517017047014, guid: 1a521d13748432f449a549730fb0043c, type: 3}
   <DizzinessRate>k__BackingField: 0.5
   <FirstDeath>k__BackingField: 0
   <IsTwoLives>k__BackingField: 1

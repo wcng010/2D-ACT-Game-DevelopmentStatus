@@ -1,5 +1,5 @@
-﻿using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+﻿using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel

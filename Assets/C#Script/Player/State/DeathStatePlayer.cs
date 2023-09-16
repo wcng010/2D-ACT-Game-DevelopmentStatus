@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using C_Script.Common.Model.EventCentre;
-using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.State
@@ -11,7 +11,7 @@ namespace C_Script.Player.State
         public override void Enter()
         {
             base.Enter();
-            Owner.gameObject.layer = LayerMask.NameToLayer("Default");
+            Owner.gameObject.layer = LayerMask.NameToLayer("Dead");
             Owner.gameObject.tag = "Untagged";
             Rigidbody2DOwner.velocity = Vector2.zero;
             ChangeColliderYSize(Collider2DOwner,PlayerData.DeathSizeY);

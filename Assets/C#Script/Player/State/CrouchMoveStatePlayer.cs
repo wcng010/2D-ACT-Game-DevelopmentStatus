@@ -1,5 +1,5 @@
-﻿using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+﻿using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEditor;
 using UnityEngine;
 
@@ -40,16 +40,16 @@ namespace C_Script.Player.StateModel
         private void SwitchState()
         {
             //Return MoveState
-            if (Owner.YAxis >= 0)
+            if (YAxis >= 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.LowSpeedStatePlayer]);
             //Crouch
-            else if (Owner.XAxis == 0)
+            else if (XAxis == 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchStatePlayer]);
             //CrouchState
-            else if(Input.GetKeyDown(KeyCode.J))
+            else if(JKey)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchAttackStatePlayer]);
             //SlideState
-            else if(Input.GetKeyDown(KeyCode.K))
+            else if(KKey)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.SlideStatePlayer]);
         }
 

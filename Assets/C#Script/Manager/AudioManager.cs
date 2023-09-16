@@ -1,4 +1,4 @@
-using C_Script.Model.Singleton;
+using C_Script.Common.Model.Singleton;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,6 +17,7 @@ namespace C_Script.Manager
         [SerializeField] [FoldoutGroup("PlayerAudio")] private AudioSource hurtAudio;
         [SerializeField] [FoldoutGroup("PlayerAudio")] private AudioSource turnAroundAudio;
         [SerializeField] [FoldoutGroup("PlayerAudio")] private AudioSource runAudio;
+        [SerializeField] [FoldoutGroup("PlayerAudio")] private AudioSource criticalattackAudio;
 
         protected override void Awake()
         {
@@ -35,5 +36,6 @@ namespace C_Script.Manager
         public void PlayerTurnAroundPlay() => turnAroundAudio.Play();
         public void PlayerRunPlay() => runAudio.Play();
         public void PlayerRunStop() => runAudio.Stop();
+        public void PlayerCriticalAttackPlay() => criticalattackAudio.Play();
     }
 }

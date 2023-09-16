@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using C_Script.BaseClass;
 using C_Script.Model.BehaviourModel;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -100,9 +99,9 @@ namespace C_Script.Common.Model.BehaviourModel
         /// <param name="criticalRate"></param>
         /// <param name="criticalDamage"></param>
         /// <returns></returns>
-        protected float CalculateAttack(float attackPower, float criticalRate, float criticalDamage)
+        protected float CalculateAttackWithoutCrit(float attackPower)
         {
-            return  criticalRate >= Random.value ? attackPower *= criticalDamage : attackPower;
+            return attackPower;
         }
         /// <summary>
         /// 检测动画播放情况

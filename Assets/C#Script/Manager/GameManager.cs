@@ -1,7 +1,10 @@
 using System;
-using C_Script.Model.Singleton;
+using C_Script.Common.Model.Singleton;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 namespace C_Script.Manager
 {
     internal class GameManager : Singleton<GameManager>

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
-using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 

@@ -1,6 +1,6 @@
 ﻿using C_Script.Common.Model.ObjectPool;
-using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 namespace C_Script.Player.StateModel
 {
@@ -9,12 +9,12 @@ namespace C_Script.Player.StateModel
         private float _deceVelocity;
         private readonly string _turnAroundAsh;
 
-        
+
         public override void Enter()
         {
             base.Enter();
             _deceVelocity = Rigidbody2DOwner.velocity.x;
-            MyObjectPool.Instance.SetActive(_turnAroundAsh);
+            AshObjectPool.Instance.SetActive(_turnAroundAsh);
         }
 
         public override void PhysicExcute()
@@ -37,7 +37,7 @@ namespace C_Script.Player.StateModel
         
         public TurnAroundStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
-            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.TurnAroundAsh,PlayerModel.ObjectPool));
+            AshObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.TurnAroundAsh,AshObjectPool.Instance.transform));
             _turnAroundAsh = PlayerData.TurnAroundAsh.name;
         }
     }

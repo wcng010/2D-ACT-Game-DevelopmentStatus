@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using C_Script.Common.Model.ObjectPool;
-using C_Script.Player.BaseClass;
+using C_Script.Player.Base;
 using C_Script.Player.Component;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.State
@@ -24,7 +24,7 @@ namespace C_Script.Player.State
         {   base.Enter();
             _isSpeedUp = true;
             Owner.StartCoroutine(JumpChange());
-            MyObjectPool.Instance.SetActive(_jumpAsh);
+            AshObjectPool.Instance.SetActive(_jumpAsh);
         }
 
         public override void PhysicExcute()
@@ -59,8 +59,8 @@ namespace C_Script.Player.State
         /*protected override void MoveBehaviour(float speed)
         {
             
-            Rigidbody2DOwner.velocity = new Vector2(Owner.XAxis*speed ,Rigidbody2DOwner.velocity.y);
-            if (Owner.XAxis<0)
+            Rigidbody2DOwner.velocity = new Vector2(XAxis*speed ,Rigidbody2DOwner.velocity.y);
+            if (XAxis<0)
             {
                 TransformOwner.localScale = new Vector3(-1, 1, 1);
             }
@@ -109,9 +109,9 @@ namespace C_Script.Player.State
                HandRevision(headFrontHit2D.point);
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.HangingStatePlayer]);
            }
-           if(Input.GetKeyDown(KeyCode.J)&& PressJKeyCount==0)
+           if(JKey&& PressJKeyCount==0)
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.AttackState1Player]);
-           if(Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
+           if(QKey&&SkillData.skillBools["Dash"])
                StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.DashStatePlayer]);
        }
        
@@ -124,7 +124,7 @@ namespace C_Script.Player.State
 
        public JumpStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
        {
-            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.JumpAsh,PlayerModel.ObjectPool));
+            AshObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.JumpAsh,AshObjectPool.Instance.transform));
             _jumpAsh = PlayerData.JumpAsh.name;
        }
     }

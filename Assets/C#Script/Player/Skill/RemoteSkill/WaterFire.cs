@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using C_Script.Common.Model.ObjectPool;
 using C_Script.Eneny.EnemyCommon.Component;
 using C_Script.Eneny.Monster.Magician.Component;
 using C_Script.Interface;
@@ -23,55 +24,36 @@ namespace C_Script.Player.Skill.RemoteSkill
         public float stunRate;
         private Animator _animator;
         private Rigidbody2D _rigidbody2D;
-        private bool _isFire;
+        private Transform _ownerTrans;
+        private Transform _myTrans;
         private bool _isBreak;
-        private float _liveTime;
-        private Vector3 _originalPos;
-        private float _xLerp;
         private static readonly int IsFire = Animator.StringToHash("IsFire");
         private static readonly int IsBreak = Animator.StringToHash("IsBreak");
-        public string ObjectNames() => gameObject.name;
-        public GameObject GameObj() => gameObject;
-        public void FireObject(Transform ownerTrans)
+        public ObjectType FireObjectType()=> ObjectType.WaterWave;
+        public void FireObject()
         {
-            var position = ownerTrans.position;
-            Instantiate(gameObject, new Vector3(position.x+ownerTrans.localScale.x*0.2f,position.y,position.z),new Quaternion(0, ownerTrans.localScale.x>0? 0:180,0,0),GameManager.Instance.ObjectPoolTrans);
+            BigObjectPool.Instance.SetOneActive(FireObjectType());
         }
 
         private void Awake()
         {
+            _myTrans = transform;
+            _ownerTrans = GameObject.FindWithTag("Player").transform;
             _animator = GetComponent<Animator>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
+        }
+
+        private void OnEnable()
+        {
             _animator.SetBool(IsFire,true);
             StartCoroutine(nameof(CheckFire));
-            _originalPos = transform.position;
+            var position = _ownerTrans.position;
+            var localScale = _ownerTrans.localScale;
+            _myTrans.position = new Vector3(position.x+localScale.x*0.2f,position.y,position.z);
+            _myTrans.eulerAngles = new Vector3(0, localScale.x>0? 0:180,0);
+            Invoke(nameof(BreakDown),liveTime);
+            _isBreak = false;
         }
-
-
-        private void Update()
-        {
-            if (_isFire&&!_isBreak)
-            {
-                /*_xLerp = Mathf.Lerp(_originalPos.x, _originalPos.x + 5*transform.localScale.x, _xLerp+=Time.fixedDeltaTime*0.1f);
-                Debug.Log(_xLerp);
-                var pos = transform.position;
-                pos = new Vector3(_xLerp, pos.y, pos.z);
-                transform.position = pos;*/
-                _rigidbody2D.AddForce(new Vector2(fireForce*(transform.rotation.y>0?-1:1),0),ForceMode2D.Impulse);
-                _isFire = false;
-            }
-
-            if (_isBreak)
-            {
-                _rigidbody2D.velocity = new Vector2(0, 0);
-            }
-
-            if ((_liveTime+= Time.unscaledDeltaTime) >= liveTime)
-            {
-                BreakDown();   
-            }
-        }
-
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Ground"))
@@ -80,7 +62,7 @@ namespace C_Script.Player.Skill.RemoteSkill
             }
             if (col.CompareTag("Enemy")&&!_isBreak)
             {
-                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithPower(amount,new Vector2(transform.rotation.y>0? -1:1,0),stunRate);
+                col.transform.GetComponentInChildren<EnemyHealth>()?.EnemyDamageWithPower(amount,new Vector2(transform.rotation.y>0? -1:1,0));
                 BreakDown();
             } 
         }
@@ -88,13 +70,15 @@ namespace C_Script.Player.Skill.RemoteSkill
         IEnumerator CheckFire()
         {
             yield return new WaitUntil(()=>_animator.GetCurrentAnimatorStateInfo(0).IsName("WaterMove"));
-            _isFire = true;
+            _rigidbody2D.AddForce(new Vector2(fireForce*(_ownerTrans.localScale.x>0?1:-1),0),ForceMode2D.Impulse);
             yield return null;
         }
 
         private void BreakDown()
         {
+            if(_isBreak) return;
             _isBreak = true;
+            _rigidbody2D.velocity = new Vector2(0, 0);
             _animator.SetTrigger(IsBreak);
             StartCoroutine(nameof(CheckBreak));
         }
@@ -103,7 +87,7 @@ namespace C_Script.Player.Skill.RemoteSkill
         {
             yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).IsName("WaterBreak"));
             yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.95f);
-            if(gameObject)Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

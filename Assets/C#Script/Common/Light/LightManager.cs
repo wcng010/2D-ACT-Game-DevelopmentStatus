@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using C_Script.Common.DataStructure;
 using C_Script.Common.Model.EventCentre;
-using C_Script.Model.Singleton;
+using C_Script.Common.Model.Singleton;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;

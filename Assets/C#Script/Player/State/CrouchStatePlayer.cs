@@ -1,6 +1,6 @@
 using System.Numerics;
-using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
@@ -28,16 +28,16 @@ namespace C_Script.Player.StateModel
         private void SwitchState()
         {
             //Return OnGroundState
-            if (Owner.YAxis >= 0)
+            if (YAxis >= 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.OnGroundStatePlayer]);
             //CrouchMove
-            else if (Owner.XAxis != 0)
+            else if (XAxis != 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchMoveStatePlayer]);
             //CrouchAttack
-            else if(Input.GetKeyDown(KeyCode.J))
+            else if(JKey)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchAttackStatePlayer]);
             //SlideState
-            else if(Input.GetKeyDown(KeyCode.K))
+            else if(KKey)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.SlideStatePlayer]);
         }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1369640510422556229}
   - component: {fileID: 1013162218251516370}
   - component: {fileID: 8800397009525848515}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 2
+  fireTime: 8
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 10
 --- !u!50 &1013162218251516370
 Rigidbody2D:
   serializedVersion: 4
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 16665039625321724}
   - component: {fileID: 1756450302123657601}
   - component: {fileID: 4211415513072271542}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,10 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 2
+  fireTime: 8
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 10
 --- !u!50 &1756450302123657601
 Rigidbody2D:
   serializedVersion: 4
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4778488450421446813}
   - component: {fileID: 478615580488397382}
   - component: {fileID: 7828110497000644028}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,10 +462,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 4
+  fireTime: 10
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 12
 --- !u!50 &478615580488397382
 Rigidbody2D:
   serializedVersion: 4
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 4706392004940787431}
   - component: {fileID: 6372802789309209137}
   - component: {fileID: 1351918145595335181}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -633,10 +633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 2
+  fireTime: 8
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 10
 --- !u!50 &6372802789309209137
 Rigidbody2D:
   serializedVersion: 4
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 7278058781909953040}
   - component: {fileID: 8912081995386774845}
   - component: {fileID: 3103780816042758253}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,10 +864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 4
+  fireTime: 10
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 12
 --- !u!50 &8912081995386774845
 Rigidbody2D:
   serializedVersion: 4
@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 559289124191240527}
   - component: {fileID: 6166891291556824370}
   - component: {fileID: 5841417708095157216}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,10 +1035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 2
+  fireTime: 8
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 10
 --- !u!50 &6166891291556824370
 Rigidbody2D:
   serializedVersion: 4
@@ -1100,7 +1100,7 @@ GameObject:
   - component: {fileID: 3819192563858065422}
   - component: {fileID: 837765088271205359}
   - component: {fileID: 967324710549969833}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1206,10 +1206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 4
+  fireTime: 10
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 12
 --- !u!50 &837765088271205359
 Rigidbody2D:
   serializedVersion: 4
@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 7531875566413118770}
   - component: {fileID: 849359112421993959}
   - component: {fileID: 737128160178189503}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Skull5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,10 +1377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98395c2739a7042b7982d385aba5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTime: 4
+  fireTime: 10
   moveSpeed: 4
   amount: 8
-  DeathTime: 6
+  DeathTime: 12
 --- !u!50 &849359112421993959
 Rigidbody2D:
   serializedVersion: 4

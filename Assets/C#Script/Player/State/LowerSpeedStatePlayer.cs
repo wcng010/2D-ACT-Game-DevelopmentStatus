@@ -1,5 +1,5 @@
-﻿using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+﻿using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel
@@ -49,29 +49,29 @@ namespace C_Script.Player.StateModel
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.OnAirStatePlayer]);
             }
             //Return OnGroundState
-            else if (Owner.XAxis == 0)
+            else if (XAxis == 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.OnGroundStatePlayer]);
             //Jump
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (SpaceKey)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.JumpStatePlayer]);
             }
             //Roll
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (KKey)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.RollStatePlayer]);
             }
             //Dash
-            else if (Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
+            else if (QKey&&SkillData.skillBools["Dash"])
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.DashStatePlayer]);
             }
-            else if (Input.GetKeyDown(KeyCode.J) && PressJKeyCount == 0)
+            else if (JKey && PressJKeyCount == 0)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.AttackState1Player]);
             }
             //CrouchMove
-            else if (Owner.YAxis < 0)
+            else if (YAxis < 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchMoveStatePlayer]);
         }
 

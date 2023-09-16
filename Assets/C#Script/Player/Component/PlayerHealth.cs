@@ -18,8 +18,7 @@ namespace C_Script.Player.Component
         
         public void PlayerDamage(float amount,Vector2 forceVector2,ForceDirection forceDir)=>Damage(PlayerData,amount,forceVector2,forceDir);
         
-        private void Damage(AttackObjectDataSo attackObjectDataSo, float amount,
-            Vector2 forceVector2,ForceDirection forceDir)
+        private void Damage(AttackObjectDataSo attackObjectDataSo, float amount, Vector2 forceVector2,ForceDirection forceDir)
         {
             if (attackObjectDataSo.Defense >= amount)
             {

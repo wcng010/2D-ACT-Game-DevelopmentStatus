@@ -1,22 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using C_Script.Model.Singleton;
+using C_Script.Common.Model.Singleton;
 using UnityEngine;
 
 namespace C_Script.Common.Model.ObjectPool
 {
-    public class MyObjectPool :Singleton<MyObjectPool>
+    public class PartObjectPool<T> :Singleton<T> where T : PartObjectPool<T>
     {
         private Dictionary<string, GameObject> _objectPool = new Dictionary<string, GameObject>();
-
         protected override void Awake()
         {
             base.Awake();
-            /*for (int i = 0; i < transform.childCount; i++) {
-                PushObject(transform.GetChild(i).gameObject);
-            }*/
         }
-
         public GameObject GetObject(string objName)
         {
             if (_objectPool == null) _objectPool = new Dictionary<string, GameObject>();

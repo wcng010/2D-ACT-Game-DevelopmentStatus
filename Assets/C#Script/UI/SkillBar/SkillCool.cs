@@ -9,7 +9,6 @@ namespace C_Script.UI.SkillBar
 {
     public abstract class SkillCool: MonoBehaviour
     {
-        public KeyCode keyCode;
         public virtual void UpdateSkillCool()
         {
         }

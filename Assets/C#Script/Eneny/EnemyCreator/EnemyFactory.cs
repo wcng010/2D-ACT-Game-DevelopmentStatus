@@ -1,6 +1,6 @@
 using System;
 using C_Script.BaseClass;
-using C_Script.Model.Singleton;
+using C_Script.Common.Model.Singleton;
 using UnityEngine;
 
 

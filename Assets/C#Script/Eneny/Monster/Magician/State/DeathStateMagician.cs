@@ -1,6 +1,5 @@
 ﻿using C_Script.Eneny.Monster.Magician.BaseClass;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 
 namespace C_Script.Eneny.Monster.Magician.State
@@ -28,6 +27,11 @@ namespace C_Script.Eneny.Monster.Magician.State
         {
             Owner.gameObject.layer = LayerMask.NameToLayer("Dead");
             Owner.gameObject.tag = "Untagged";
+        }
+
+        public override void Exit()
+        {
+            Debug.Log(2);
         }
 
         public DeathStateMagician(MagicianBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)

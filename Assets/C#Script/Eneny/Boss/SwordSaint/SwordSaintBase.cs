@@ -39,7 +39,7 @@ namespace C_Script.Eneny.Boss.SwordSaint
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStop,DemonBossStop);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.PlayerDeath,AfterPlayerDeath);
-            SwordSaintView.EnemyHurt.AddListener(HurtEvent);
+            SwordSaintView.EnemyHurtCrit.AddListener(HurtEvent);
             SwordSaintView.EnemyDeath.AddListener(DeathEvent);
         }
         
@@ -58,7 +58,7 @@ namespace C_Script.Eneny.Boss.SwordSaint
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStop,DemonBossStop);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.PlayerDeath,AfterPlayerDeath);
-            SwordSaintView.EnemyHurt.RemoveListener(HurtEvent);
+            SwordSaintView.EnemyHurtCrit.RemoveListener(HurtEvent);
             SwordSaintView.EnemyDeath.RemoveListener(DeathEvent);
         }
         private void FindComponent()
@@ -114,7 +114,8 @@ namespace C_Script.Eneny.Boss.SwordSaint
 
         public override void HurtEvent()
         {
-            if(Random.value>SwordSaintData.DizzinessRate&&!SwordSaintData.SuperArmor)
+            if(/*Random.value>SwordSaintData.DizzinessRate&&*/!SwordSaintData.SuperArmor
+                                                        &&StateMachine.CurrentState!=SwordSaintStateDic[EnemyStateType.DeathStateEnemy])
                 StateMachine.ChangeState(SwordSaintStateDic[EnemyStateType.HurtStateEnemy]);
         }
 

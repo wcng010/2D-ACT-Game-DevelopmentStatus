@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using C_Script.Common.Model.ObjectPool;
-using C_Script.Player.BaseClass;
+using C_Script.Player.Base;
 using C_Script.Player.Component;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel
@@ -28,7 +28,7 @@ namespace C_Script.Player.StateModel
 
         public override void Enter()
         {
-            SkillData.skillBools["Dash"] = true;
+            SkillData.skillBools["Dash"] = false;
             base.Enter();
             _dashLength = PlayerData.DashLength;
             //There are obstacles ahead
@@ -45,7 +45,8 @@ namespace C_Script.Player.StateModel
             Rigidbody2DOwner.constraints = RigidbodyConstraints2D.FreezePositionY;
             Rigidbody2DOwner.gravityScale = PlayerData.GravityScale;
             _xLerp = 0;
-            MyObjectPool.Instance.SetActive(_dashAsh);
+            AshObjectPool.Instance.SetActive(_dashAsh);
+            Owner.StartCoroutine(AfterImageActive());
         }
         public override void LogicExcute()
         {
@@ -70,17 +71,29 @@ namespace C_Script.Player.StateModel
             Dash = DashState.CanDash;
             yield return null;
         }
-
         private float CalculateDashX()
         {
-            return Mathf.Lerp(_dashOriginalX, _dashOriginalX + TransformOwner.localScale.x*_dashLength,
+            float dis = TransformOwner.localScale.x * _dashLength;
+            return Mathf.Lerp(_dashOriginalX, _dashOriginalX + dis, 
                 _xLerp+=Time.unscaledDeltaTime*PlayerData.DashSpeed);
+             
         }
+
+        private IEnumerator AfterImageActive()
+        {
+            while (StateMachine.CurrentState == this)
+            {
+                BigObjectPool.Instance.SetOneActive(ObjectType.DashImage);
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
 
         public DashStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {
-            MyObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.DashAsh,PlayerModel.ObjectPool));
+            AshObjectPool.Instance.PushObject(GameObject.Instantiate(PlayerData.DashAsh,AshObjectPool.Instance.transform));
             _dashAsh = PlayerData.DashAsh.name;
+            BigObjectPool.Instance.PushObject(ObjectType.DashImage,GameObject.Instantiate(PlayerData.AfterImageDash));
         }
     }
 }

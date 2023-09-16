@@ -1,6 +1,6 @@
-﻿using C_Script.Player.BaseClass;
+﻿using C_Script.Player.Base;
 using C_Script.Player.Data;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.State.BaseState;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +22,7 @@ namespace C_Script.Player.StateModel.SupperState
 
         public override void LogicExcute()
         {
-            if (Input.GetKeyDown(KeyCode.I)&&!PlayerData.IsLinkTime)
+            /*if (Input.GetKeyDown(KeyCode.I)&&!PlayerData.IsLinkTime)
             {
                 PlayerData.IsLinkTime = true;
                 _timeScale = Time.timeScale;
@@ -34,7 +34,7 @@ namespace C_Script.Player.StateModel.SupperState
             {
                 PlayerData.IsLinkTime = false;
                 Time.timeScale = _timeScale;
-            }
+            }*/
         }
         public override void Exit()
         {

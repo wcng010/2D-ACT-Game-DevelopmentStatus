@@ -29,7 +29,8 @@ namespace C_Script.UI.ScenesBloodBars
 
         private void OnEnable()
         {
-            _view.EnemyHurt.AddListener(UpdateHealthBar);
+            _view.EnemyHurtCrit.AddListener(UpdateHealthBar);
+            _view.EnemyHurtNoCrit.AddListener(UpdateHealthBar);
         }
 
         private void Start()
@@ -41,7 +42,8 @@ namespace C_Script.UI.ScenesBloodBars
 
         private void OnDisable()
         {
-            _view.EnemyHurt.RemoveListener(UpdateHealthBar);
+            _view.EnemyHurtCrit.RemoveListener(UpdateHealthBar);
+            _view.EnemyHurtNoCrit.RemoveListener(UpdateHealthBar);
         }
 
         private void UpdateHealthBar()

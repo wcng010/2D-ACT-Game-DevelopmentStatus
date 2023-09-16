@@ -5,14 +5,21 @@ namespace C_Script.Common.Model.ObjectPool
 {
     public class PoolPart : MonoBehaviour,ISetParentMessage
     {
-        [SerializeField] private Transform followTransform;
-        public void SetParentTrans(Vector2 offset)=> transform.position = followTransform.position + (Vector3)offset;
+        private Transform _followTransform;
+        private Transform FollowTransform => _followTransform ? _followTransform : _followTransform = GetComponent<IObjectPool>().SetFollower();
+        public void SetOffSet(Vector2 offset)
+        {
+            transform.position = FollowTransform.position + (Vector3)offset;
+        }
 
+        public void SetScaleX_Follow()
+        {
+            transform.localScale = new Vector3(FollowTransform.localScale.x, 1, 1);
+        }
 
-        public void SetScaleX_Follow()=>transform.localScale = new Vector3(followTransform.localScale.x,1,1);
-
-
-        public void SetScaleX_Unfollow()=>transform.localScale = new Vector3(-followTransform.localScale.x,1,1);
-
+        public void SetScaleX_Unfollow()
+        {
+            transform.localScale = new Vector3(-FollowTransform.localScale.x, 1, 1);
+        }
     }
 }

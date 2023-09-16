@@ -12,9 +12,7 @@ using C_Script.Player.StateModel;
 using C_Script.Player.StateModel.SupperState;
 using UnityEngine;
 
-
-
-namespace C_Script.Player.BaseClass
+namespace C_Script.Player.Base
 {
     public enum PlayerStateType
     {
@@ -43,8 +41,6 @@ namespace C_Script.Player.BaseClass
     {
         public PlayerModel PlayerModel => GetComponentInParent<PlayerModel>();
         [Header("角色状态字典")] public readonly Dictionary<PlayerStateType, State<PlayerBase>> PlayerStateDic=new Dictionary<PlayerStateType, State<PlayerBase>>();
-        [field: Header("Horizontal输入")] public float XAxis { get; private set; }
-        [field: Header("Vertical输入")] public float YAxis { get; private set; }
         public PlayerData PlayerData => PlayerModel.PlayerData;
         public SkillData SkillBool => PlayerModel.SkillData;
         public RaycastHit2D HeadFrontHit2D { get; private set; }
@@ -65,7 +61,6 @@ namespace C_Script.Player.BaseClass
 
         private void Start()
         {
-            IgnoreCollision();
             StartCoroutine(CheckCoroutine());
         }
 
@@ -194,16 +189,12 @@ namespace C_Script.Player.BaseClass
                 yield return new WaitForSeconds(0.05f);
             }
         }
-        private void IgnoreCollision()=>Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"),gameObject.layer);
-
         // ReSharper disable Unity.PerformanceAnalysis
         /// <summary>
         /// Use StateMachine To SwitchState
         /// </summary>
         protected override void SwitchState()
         {
-            XAxis = Input.GetAxis("Horizontal");
-            YAxis = Input.GetAxis("Vertical");
         }
     }
 }

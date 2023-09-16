@@ -4,7 +4,6 @@ using C_Script.Eneny.Boss.DemonBoss.BaseClass;
 using C_Script.Eneny.Boss.DemonBoss.Model;
 using C_Script.Eneny.Boss.DemonBoss.State.StateBase;
 using C_Script.Eneny.Monster.Magician.State.StateBase;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 
 namespace C_Script.Eneny.Boss.DemonBoss.State
@@ -23,11 +22,12 @@ namespace C_Script.Eneny.Boss.DemonBoss.State
             if (_isFirstEnter == 0)
             {
                 GameObject.Instantiate(DemonBossData.SkullCircle, TransformOwner);
+                BigObjectPool.Instance.SetAllActive(ObjectType.Skull);
                 _isFirstEnter = 1;
             }
             else
             {
-                BigObjectPool.Instance.SetActive(ObjectType.Skull);
+                BigObjectPool.Instance.SetAllActive(ObjectType.Skull);
             }
             EnergyBar.parent.gameObject.SetActive(true);
             _readyTime = DemonBossData.ReadyTime;

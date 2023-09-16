@@ -1,8 +1,11 @@
 using System;
-using C_Script.Player.BaseClass;
+using System.Collections;
+using System.Collections.Generic;
+using C_Script.Player.Base;
 using C_Script.Player.Component;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.State.BaseState;
 using UnityEditor;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel
@@ -12,7 +15,8 @@ namespace C_Script.Player.StateModel
         private int MoveDir;//Right:1,Left:-1
         private bool IsFullSpeed;
         private bool IsSpeedUp;
-        
+        private int _trigger;
+
         private GameObject MoveAsh { 
             get {
                 if(!_moveAsh)
@@ -24,8 +28,9 @@ namespace C_Script.Player.StateModel
         public override void Enter()
         {
             base.Enter();
-            if (Owner.XAxis > 0) MoveDir = 1;
-            else if (Owner.XAxis < 0) MoveDir = -1;
+            if (XAxis > 0) MoveDir = 1;
+            else if (XAxis < 0) MoveDir = -1;
+            _trigger = 0;
             IsFullSpeed = false;
             PlayerData.WalkAshEffectTrriger = true;
             MoveAsh.SetActive(true);
@@ -59,35 +64,50 @@ namespace C_Script.Player.StateModel
             if (!Owner.IsGroundThreeRays) 
                 StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.OnAirStatePlayer]);
             //Return OnGroundState
-            else if (IsFullSpeed&&Input.GetKeyDown(KeyCode.D) && MoveDir==-1)
+            else if (IsFullSpeed&&XAxis>0 && MoveDir==-1)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.TurnAroundStatePlayer]);
-            else if (IsFullSpeed&&Input.GetKeyDown(KeyCode.A) && MoveDir == 1) 
+            else if (IsFullSpeed&&XAxis<0 && MoveDir == 1)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.TurnAroundStatePlayer]);
-            else if (Owner.XAxis == 0)
-                StateMachine.ChangeState(StateDictionary[PlayerStateType.OnGroundStatePlayer]);
-            //Jump
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (XAxis == 0 && _trigger==0)
+            {
+                Owner.StartCoroutine(CoyoteStop());
+                _trigger = 1;
+            }
+                //Jump
+            else if (SpaceKey)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.JumpStatePlayer]);
             }
             //Roll
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (KKey)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.RollStatePlayer]);
             }
             //Dash
-            else if (Input.GetKeyDown(KeyCode.Q)&&!SkillData.skillBools["Dash"])
+            else if (QKey&&SkillData.skillBools["Dash"])
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.DashStatePlayer]);
             }
-            else if (Input.GetKeyDown(KeyCode.J) && PressJKeyCount == 0)
+            else if (JKey && PressJKeyCount == 0)
             {
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.AttackState1Player]);
             }
             //CrouchMove
-            else if (Owner.YAxis < 0)
+            else if (YAxis < 0)
                 StateMachine.ChangeState(StateDictionary[PlayerStateType.CrouchMoveStatePlayer]);
         }
+
+
+
+        IEnumerator CoyoteStop()
+        {
+            yield return new WaitForSecondsRealtime(PlayerData.CoyoteTime);
+            if(StateMachine.CurrentState == this)
+                StateMachine.ChangeState(StateDictionary[PlayerStateType.OnGroundStatePlayer]);
+        }
+
+
+
 
         public HighSpeedStatePlayer(PlayerBase owner, string animationName, string nameToTrigger) : base(owner, animationName, nameToTrigger)
         {

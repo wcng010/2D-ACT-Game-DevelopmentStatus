@@ -30,10 +30,12 @@ MonoBehaviour:
   <PatrolRange>k__BackingField: 0
   <PatrolSpeed>k__BackingField: 0
   <PursuitSpeed>k__BackingField: 2
-  <HitEffectOffSetY>k__BackingField: 0
+  <HitEffectOffSet>k__BackingField: {x: 0, y: 0}
   <SuperArmor>k__BackingField: 0
-  <HitEffect1>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
-  <HitEffect2>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <AttackInvalid>k__BackingField: 0
+  <HitEffect1>k__BackingField: {fileID: 310035620622530289, guid: f3ce85b262919b54eabce73491a60e52, type: 3}
+  <HitEffect2>k__BackingField: {fileID: 1553162559274315263, guid: 93115efe890148f4d98eceb1c81d7edb, type: 3}
+  <HitEffect3>k__BackingField: {fileID: 372244517017047014, guid: 1a521d13748432f449a549730fb0043c, type: 3}
   <DizzinessRate>k__BackingField: 0.5
   <FirstDeath>k__BackingField: 0
   <IsTwoLives>k__BackingField: 0

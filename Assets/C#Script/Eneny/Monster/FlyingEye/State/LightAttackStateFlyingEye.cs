@@ -47,8 +47,7 @@ namespace C_Script.Eneny.Monster.FlyingEye.State
                 {
                     if(StateMachine.CurrentState!=this||IsAniamtionFinshed) yield break;
                     hit.transform.GetComponentInChildren<PlayerHealth>().PlayerDamage
-                    (CalculateAttack(FlyingEyeData.AttackPower,FlyingEyeData.CriticalRate,FlyingEyeData.CriticalDamage),
-                        _toTargetVector2,ForceDirection.None);
+                    (CalculateAttackWithoutCrit(FlyingEyeData.AttackPower), _toTargetVector2,ForceDirection.None);
                     yield break;
                 }
                 yield return new WaitForSeconds(0.05f);

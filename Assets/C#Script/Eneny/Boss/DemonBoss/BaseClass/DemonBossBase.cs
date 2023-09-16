@@ -43,7 +43,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
         {
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Subscribe(CombatEventType.EnemyStop,DemonBossStop);
-            DemonBossView.EnemyHurt.AddListener(HurtEvent);
+            DemonBossView.EnemyHurtCrit.AddListener(HurtEvent);
             DemonBossView.EnemyDeath.AddListener(DeathEvent);
         }
 
@@ -66,7 +66,7 @@ namespace C_Script.Eneny.Boss.DemonBoss.BaseClass
         {
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStart,DemonBossStart);
             CombatEventCentreManager.Instance.Unsubscribe(CombatEventType.EnemyStop,DemonBossStop);
-            DemonBossView.EnemyHurt.RemoveListener(HurtEvent);
+            DemonBossView.EnemyHurtCrit.RemoveListener(HurtEvent);
             DemonBossView.EnemyDeath.RemoveListener(DeathEvent);
         }
         

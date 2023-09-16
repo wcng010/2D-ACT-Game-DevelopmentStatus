@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using C_Script.Model.Singleton;
+﻿using System;
+using System.Collections.Generic;
+using C_Script.Common.Model.Singleton;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ namespace C_Script.Common.Model.EventCentre
      
         private static readonly IDictionary<CombatEventType, UnityEvent> Events =
             new Dictionary<CombatEventType, UnityEvent>(); //Events字典装有若干个事件，一一对应事件类型，
+        
         public void Subscribe(CombatEventType eventType, UnityAction listener)
         {
             UnityEvent thisEvent; //事件

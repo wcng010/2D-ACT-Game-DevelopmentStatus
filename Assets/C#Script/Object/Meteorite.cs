@@ -32,14 +32,10 @@ namespace C_Script.Object
             _meteoriteRb = GetComponent<Rigidbody2D>();
             _meteoriteRb.AddForce((_toTarget = playerPos -(Vector2)transform.position)*fallPower,ForceMode2D.Impulse);
             _startTime = Time.unscaledTime;
+            Invoke(nameof(Recovery), aliveTime);
         }
-
-        private void Update()
-        {
-            
-            if (Time.unscaledTime - _startTime > aliveTime)
-                Destroy(gameObject);    
-        }
+        
+        private void Recovery() => Destroy(gameObject);
         
         public void OnTriggerEnter2D(Collider2D collision)
         {
@@ -47,13 +43,9 @@ namespace C_Script.Object
             {
                 CombatEventCentreManager.Instance.Publish(CombatEventType.PlayerHurt);
                 collision.GetComponentInChildren<PlayerHealth>()
-                    .PlayerDamage(damageAmount,StaticFunction.CalculateSpecularDir(_toTarget),ForceDirection.Forward);
+                    .PlayerDamage(damageAmount,StaticFunction.CalculateSpecularDir(_toTarget),ForceDirection.Up);
                 Destroy(gameObject);
             }
-           // else if (collision.CompareTag("Ground"))
-           // {
-            //    Destroy(gameObject);
-           // }
         }
     }
 

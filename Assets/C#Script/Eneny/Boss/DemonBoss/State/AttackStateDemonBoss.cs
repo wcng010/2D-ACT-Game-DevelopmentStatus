@@ -3,7 +3,6 @@ using C_Script.Eneny.Boss.DemonBoss.BaseClass;
 using C_Script.Eneny.Boss.DemonBoss.State.StateBase;
 using C_Script.Object;
 using C_Script.Player.Component;
-using C_Script.Player.StateModel.BaseState;
 using UnityEngine;
 
 namespace C_Script.Eneny.Boss.DemonBoss.State

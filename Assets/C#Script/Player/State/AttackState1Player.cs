@@ -1,7 +1,8 @@
 ﻿using System.Collections;
-using C_Script.Player.BaseClass;
+using C_Script.Common.Model.ObjectPool;
+using C_Script.Player.Base;
 using C_Script.Player.Component;
-using C_Script.Player.StateModel.BaseState;
+using C_Script.Player.State.BaseState;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,7 +19,8 @@ namespace C_Script.Player.StateModel
             Rigidbody2DOwner.velocity = new Vector2(0, vec.y/2);
             Owner.StartCoroutine(AttackRayTestWithoutPower(PlayerData.Attack1Range, AnimationTime,Collider2DOwner.size.y/2));
             if(SkillData.skillBools["WaterWave"])
-                OwnerCore.GetCoreComponent<ObjectComponent>().FireObject("WaterFire",TransformOwner);
+                OwnerCore.GetCoreComponent<ObjectComponent>().FireObject(ObjectType.WaterWave);
+            JKey = false;
         }
         public override void LogicExcute()
         {
@@ -35,7 +37,7 @@ namespace C_Script.Player.StateModel
         }
         private void SwitchState()
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (JKey)
             {
                 PressJKeyCount = 1;
             }

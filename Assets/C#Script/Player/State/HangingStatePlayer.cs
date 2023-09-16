@@ -1,5 +1,5 @@
-﻿using C_Script.Player.BaseClass;
-using C_Script.Player.StateModel.BaseState;
+﻿using C_Script.Player.Base;
+using C_Script.Player.State.BaseState;
 using UnityEngine;
 
 namespace C_Script.Player.StateModel
@@ -42,12 +42,12 @@ namespace C_Script.Player.StateModel
             else
             {
                 Rigidbody2DOwner.velocity = new Vector2(0, 0);
-                if (Owner.XAxis/TransformOwner.localScale.x > 0)
+                if (XAxis/TransformOwner.localScale.x > 0)
                     StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.BoardStatePlayer]);
             }
             if (Owner.IsGroundThreeRays)
             {
-                if (Owner.XAxis/TransformOwner.localScale.x > 0)
+                if (XAxis/TransformOwner.localScale.x > 0)
                     StateMachine.ChangeState(Owner.PlayerStateDic[PlayerStateType.BoardStatePlayer]);
             }
         }

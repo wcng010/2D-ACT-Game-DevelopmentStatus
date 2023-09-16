@@ -1,4 +1,5 @@
 using System;
+using C_Script.Common.Model.ObjectPool;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,8 +7,7 @@ namespace C_Script.Interface
 {
     public interface IFireObject  
     {
-        String ObjectNames();
-        GameObject GameObj();
-        void FireObject(Transform ownerTrans);
+        ObjectType FireObjectType();
+        void FireObject();
     }
 }
